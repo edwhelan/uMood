@@ -11,7 +11,7 @@ create table health (
   id serial primary key,
   dailyscore integer,
   date timestamp,
-  post varchar(10000),
+  notes varchar(10000),
   user_id integer references users (id)
 );
 
