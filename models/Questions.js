@@ -9,13 +9,18 @@ class Question {
   // RETRIEVE
   static getQuestions() {
     // db.any query
-    .then(questionArray => {
-      const instanceArray = questionArray.map(quesObj => {
-        const q = new Question(quesObj.id, quesObj.questiontext);
-        return q;
-      });
-      return instanceArray;
-    })
+    return db.any(`
+    select *
+    from
+    questions
+    `)
+      .then(questionArray => {
+        const instanceArray = questionArray.map(quesObj => {
+          const q = new Question(quesObj.id, quesObj.questiontext);
+          return q;
+        });
+        return instanceArray;
+      })
   }
 
 }

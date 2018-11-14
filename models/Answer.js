@@ -8,11 +8,15 @@ class Answer {
   }
 
   // CREATE
-  static add(answer, date) {
+  static add(answer, date, user_id, question_id) {
     // sql query
-    [answer, date]
+    return db.any(`insert into answers
+    (answer, date,  user_id, question_id)
+      values
+    ($1, $2, $3, $4)`,
+      [answer, date, user_id, question_id])
       .then(result => {
-        const a = new Answer(result.id, result.answer, result.date);
+        const a = new Answer(result.id, result.answer, result.date, result.user_id, result.question_id);
         return a;
       })
   }

@@ -9,11 +9,16 @@ class Health {
   }
 
   // CREATE
-  static add(dailyscore, date, notes) {
+  static add(dailyscore, date, notes, user_id) {
     // sql query
-    [dailyscore, date, notes]
+    return db.any(`
+    insert into health 
+      (dailyscore, date, notes, user_id)
+        values
+      ($1, $2, $3, $4)`,
+      [dailyscore, date, notes, user_id])
       .then(result => {
-        const h = new Health(result.id, dailyscore, date, notes);
+        const h = new Health(result.id, dailyscore, date, notes, user_id);
         return h;
       })
   }
@@ -21,9 +26,18 @@ class Health {
   // RETRIEVE
   static getByDate(date) {
     // sql query
-    [date]
+    return db.any(`
+    select 
+    dailyscore, date, notes, user_id, displayname
+    from
+    health
+      inner join
+      users u
+      on u.id = user_id
+    where date=$1 AND u.id=$2;`,
+      [date, id])
       .then(result => {
-        const h = new Health(result.id, result.dailyscore, result.date, result.notes);
+        const h = new Health(result.id, result.dailyscore, result.date, result.notes, displayname);
         return h;
       })
   }

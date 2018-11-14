@@ -14,8 +14,11 @@ class User {
     const salt = bcrypt.genSaltSync(saltRounds);
     const hash = bcrypt.hashSync(password, salt);
     // SQL QUERY
-
-    [displayname, emailaddress, hash] //insert these variables
+    return db.one(`insert into users
+    (displayname, emailaddress, password)
+        values
+    ($1, $2, $3)`,
+      [displayname, emailaddress, password])
       .then(data => {
         const u = new User(data.id, displayname, emailaddress);
         return u;
@@ -26,10 +29,16 @@ class User {
   static getById() {
     // db.one query
     // this.id
-    .then(result => {
-      const u = new User(result.id, result.displayname, result.emailaddress, result.password);
-      return u;
-    })
+    return db.one(`
+    select *
+    from 
+    users
+    where id=$1`,
+      [id])
+      .then(result => {
+        const u = new User(result.id, result.displayname, result.emailaddress, result.password);
+        return u;
+      })
   }
 
 
