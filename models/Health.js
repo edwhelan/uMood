@@ -24,7 +24,7 @@ class Health {
   }
 
   // RETRIEVE
-  static getByDate(date) {
+  static getByDate(date, id) {
     // sql query
     return db.any(`
     select 
@@ -37,7 +37,7 @@ class Health {
     where date=$1 AND u.id=$2;`,
       [date, id])
       .then(result => {
-        const h = new Health(result.id, result.dailyscore, result.date, result.notes, displayname);
+        const h = new Health(result.id, result.dailyscore, result.date, result.notes, result.displayname);
         return h;
       })
   }

@@ -26,7 +26,7 @@ class User {
   }
 
   // RETRIEVE
-  static getById() {
+  static getById(id) {
     // db.one query
     // this.id
     return db.one(`
