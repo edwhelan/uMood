@@ -1,7 +1,7 @@
 -- users table 
 create table users (
   id serial primary key,
-  displayname varchar (100),
+  displayname varchar (100) not null,
   emailaddress varchar(100) not null unique,
   password varchar(400) not null
 );
@@ -18,13 +18,13 @@ create table health (
 -- questions table
 create table questions (
   id serial primary key,
-  questiontext text,
+  questiontext text
 );
 
 -- answers table
 create table answers (
   id serial primary key,
-  answer integer
+  answer integer,
   user_id integer references users (id),
-  question_id integer references question (id)
+  question_id integer references questions (id)
 );
