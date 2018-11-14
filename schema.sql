@@ -25,6 +25,7 @@ create table questions (
 create table answers (
   id serial primary key,
   answer integer,
+  date timestamp,
   user_id integer references users (id),
   question_id integer references questions (id)
 );
