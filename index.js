@@ -38,6 +38,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 const page = require(`./views/page`);
 const helper = require(`./views/helper`);
 
+const User = require(`./models/User`);
+const Health = require(`./models/Health`);
+const Question = require(`./models/Questions`);
+const Answer = require(`./models/Answer`);
+
 function protectRoute(req, res, next) {
   let isLoggedIn = req.session.user ? true : false;
   if (isLoggedIn) {
@@ -52,26 +57,26 @@ function protectRoute(req, res, next) {
 
 // ROOT
 app.get('/', (req, res) => {
-  res.send(page(``));
-})
+  // res.send(page(``));
+});
 
 // REGISTER // post only
 app.post(`/register`, (req, res) => {
-  res.send(page(``));
-})
+  // res.send(page(``));
+});
 
 // LOGIN // Post only
 app.post(`/login`, (req, res) => {
-  res.send(page(``));
-})
+  // res.send(page(``));
+});
 
 // UserHOME
 app.get(`/home`, (req, res) => {
-  res.send(page(``));
-})
+  // res.send(page(``));
+});
 
 
 // LISTEN ON PORT
 app.listen(3000, () => {
   console.log(`Ready...`);
-})
+});
