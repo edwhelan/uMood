@@ -2,16 +2,11 @@
 - Focus/ Intellectual
   - How was your focus today?
 
-    - I got everything I needed to get done today.
-    - It was easy to stay focused on my tasks.
-    - I felt distracted by looming thoughts.
-
 - Interpersonal relationships
   - How did your social interactions go today?
 
 - Self awareness/ internal image of self
   - How did you feel about yourself today?
-    - I am proud of what I accomplished today.
   
 - Physical/ body image
   - How did you feel physically? 
