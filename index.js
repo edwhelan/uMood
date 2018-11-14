@@ -8,20 +8,20 @@ const db = require('./models/db');
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
-const session = require('express-session');
-const pgSession = require('connect-pg-simple')(session);
+// const session = require('express-session');
+// const pgSession = require('connect-pg-simple')(session);
 
 // Using dependencies
-app.use(session({
-  store: new pgSession({
-    pgPromise: db
-  }),
-  secret: 'whatever123', // remember to adjust before deploying
-  saveUninitialized: false,
-  cookie: {
-    maxAge: 30 * 24 * 60 * 60 * 1000 //Adjusts max time of session to 30 days
-  }
-}));
+// app.use(session({
+//   store: new pgSession({
+//     pgPromise: db
+//   }),
+//   secret: 'whatever123', // remember to adjust before deploying
+//   saveUninitialized: false,
+//   cookie: {
+//     maxAge: 30 * 24 * 60 * 60 * 1000 //Adjusts max time of session to 30 days
+//   }
+// }));
 
 app.use(express.static('public')); // all static files will be served from public folder
 
@@ -57,7 +57,7 @@ function protectRoute(req, res, next) {
 
 // ROOT
 app.get('/', (req, res) => {
-  // res.send(page(``));
+
 });
 
 // REGISTER // post only

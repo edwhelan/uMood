@@ -6,7 +6,7 @@
   "scripts": {
     "reset-db": "dropdb umood-db; createdb umood-db; psql -f schema.sql umood-db; psql -f seed.sql umood-db;",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon test.js",
+    "dev": "nodemon index.js",
     "debug": "node --inspect-brk index.js"
   },
   "keywords": [],

@@ -1,7 +1,7 @@
 const helper = require(`./helper`);
 
 // Main Page View
-function page(headerContent, content, isLoggedIn = false) {
+function page(content) {
   return `
     <!doctype html>
     <html>
@@ -14,10 +14,6 @@ function page(headerContent, content, isLoggedIn = false) {
       </head>
       <body>
         <header>
-        ${headerContent}
-          ${
-    isLoggedIn ? helper.logoutButton() : helper.loginOrRegister()
-    }
         </header>
         ${content}
       </body>
@@ -25,4 +21,9 @@ function page(headerContent, content, isLoggedIn = false) {
     `
 }
 
-module.exports = page; 
+module.exports = page;
+
+//         ${headerContent}
+// ${
+  // isLoggedIn ? helper.logoutButton() : helper.loginOrRegister()
+  // }
