@@ -7,11 +7,6 @@ function loginForm() {
         </label>
         <br>
         <label>
-            Display Name:
-            <input type="text" name="displayName">
-        </label>
-        <br>
-        <label>
             Password:
             <input type="password" name="password">
         </label>
