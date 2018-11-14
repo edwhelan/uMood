@@ -1,5 +1,4 @@
 // Initial config and require statements
-
 require('dotenv').config();
 
 // DB
@@ -50,18 +49,19 @@ function protectRoute(req, res, next) {
 }
 
 // ROUTES
+
 // ROOT
 app.get('/', (req, res) => {
   res.send(page(``));
 })
 
-// REGISTER
-app.get(`/register`, (req, res) => {
+// REGISTER // post only
+app.post(`/register`, (req, res) => {
   res.send(page(``));
 })
 
-// LOGIN
-app.get(`/login`, (req, res) => {
+// LOGIN // Post only
+app.post(`/login`, (req, res) => {
   res.send(page(``));
 })
 
