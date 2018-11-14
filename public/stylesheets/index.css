@@ -1,0 +1,20 @@
+html {
+    box-sizing: border-box;
+    padding: 10px;
+}
+  *, *:before, *:after {
+    box-sizing: inherit;
+}
+
+.Mission {
+    outline: 1px solid black;
+}
+
+.HomeNav {
+    outline: 1px solid black;
+    text-align: end;
+}
+
+.Resources {
+    outline: 1px solid black;
+}
