@@ -50,9 +50,27 @@ function getUserByID(id) {
 //get display name
 
 //get health by date
-
+function getHealthByDate(date, id) {
+  return db.any(`
+  select 
+  dailyscore, date, notes, user_id, displayname
+  from
+  health
+    inner join
+    users u
+    on u.id = user_id
+  where date=$1 AND u.id=$2;`, [date, id]
+  ).then(console.table)
+}
 //get answer by date
-
+// select
+//       u.name,
+//       comment
+//       from comments
+//         inner join
+//           users u 
+//           on u.id = commenter_id
+//       where u.id = $1`, [commenter_id]
 // UPDATE
 
 // DELETE
@@ -63,4 +81,5 @@ module.exports = {
   addAnAnswer,
   getQuestions,
   getUserByID,
+  getHealthByDate,
 }
