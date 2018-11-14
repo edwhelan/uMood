@@ -1,7 +1,7 @@
 const helper = require(`./helper`);
 
 // Main Page View
-function page(content, isLoggedIn = false) {
+function page(headerContent, content, isLoggedIn = false) {
   return `
     <!doctype html>
     <html>
@@ -14,6 +14,7 @@ function page(content, isLoggedIn = false) {
       </head>
       <body>
         <header>
+        ${headerContent}
           ${
     isLoggedIn ? helper.logoutButton() : helper.loginOrRegister()
     }
