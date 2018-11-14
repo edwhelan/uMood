@@ -11,7 +11,7 @@ insert into users
 
 
   insert into health 
-    (dailyscore, date, post, user_id)
+    (dailyscore, date, notes, user_id)
       values
     (5, '2018-12-25', 'Today was a good day', 1),
     (8, '2018-12-25', 'Today was a bad day', 2),
@@ -38,7 +38,7 @@ insert into questions
 
 
   insert into answers
-    (answers, date,  user_id, question_id)
+    (answer, date,  user_id, question_id)
       values
     (1, '2018-12-25', 1, 1),
     (1, '2018-12-25', 1, 2),
