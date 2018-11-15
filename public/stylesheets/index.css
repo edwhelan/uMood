@@ -5,6 +5,19 @@ html {
 }
   *, *:before, *:after {
     box-sizing: inherit;
+    background-color: #d7f4ff;
+}
+
+.loginAndRegisterLinks {
+    background-color: #0078a8;
+}
+
+.login {
+    background-color: #009fb2;
+}
+
+.register {
+    background-color: #009fb2;
 }
 
 /* Styles for accordion list */
