@@ -26,8 +26,9 @@ class Answer {
     // sql query
     [date]
       .then(result => {
-        const a = new Answer(result.id, result.answer, result.date);
-        return a;
+        return result
+        // const a = new Answer(result.id, result.answer, result.date);
+        // return a;
       })
   }
 

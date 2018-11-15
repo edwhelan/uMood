@@ -28,7 +28,7 @@ class Health {
     // sql query
     return db.any(`
     select 
-    dailyscore, date, notes, user_id, displayname
+    *
     from
     health
       inner join
@@ -37,8 +37,9 @@ class Health {
     where date=$1 AND u.id=$2;`,
       [date, id])
       .then(result => {
-        const h = new Health(result.id, result.dailyscore, result.date, result.notes, result.displayname);
-        return h;
+        return result;
+        // const h = new Health(result.id, result.dailyscore, result.date, result.notes, result.user_id);
+        // return h;
       })
   }
   // UPDATE
