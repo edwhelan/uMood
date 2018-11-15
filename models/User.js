@@ -2,11 +2,11 @@ const db = require(`./db`);
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 class User {
-  constructor(id, displayname, emailaddress, password) {
+  constructor(id, displayname, emailaddress, passHash) {
     this.id = id,
       this.displayname = displayname,
       this.emailaddress = emailaddress,
-      this.password = password
+      this.passHash = passHash
   }
 
   // CREATE
@@ -17,9 +17,9 @@ class User {
     return db.one(`insert into users
     (displayname, emailaddress, password)
         values
-    ($1, $2, $3), 
+    ($1, $2, $3)
     returning id`,
-      [displayname, emailaddress, password])
+      [displayname, emailaddress, hash])
       .then(data => {
         const u = new User(data.id, displayname, emailaddress);
         return u;
@@ -40,6 +40,19 @@ class User {
         const u = new User(result.id, result.displayname, result.emailaddress, result.password);
         return u;
       })
+  }
+
+  static getByEmail(email) {
+    return db.one(`
+      select * from users where emailaddress ilike '$1:raw'`, [email])
+      .then(result => {
+        const u = new User(result.id, result.displayname, result.emailaddress, result.password);
+        return u;
+      });
+  }
+
+  checkPassword(password) {
+    return bcrypt.compareSync(password, this.passHash);
   }
 
 

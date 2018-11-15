@@ -8,31 +8,31 @@ const db = require('./models/db');
 const bodyParser = require('body-parser');
 const express = require('express');
 const app = express();
-// const session = require('express-session');
-// const pgSession = require('connect-pg-simple')(session);
+const session = require('express-session');
+const pgSession = require('connect-pg-simple')(session);
 
 // Using dependencies
-// app.use(session({
-//   store: new pgSession({
-//     pgPromise: db
-//   }),
-//   secret: 'whatever123', // remember to adjust before deploying
-//   saveUninitialized: false,
-//   cookie: {
-//     maxAge: 30 * 24 * 60 * 60 * 1000 //Adjusts max time of session to 30 days
-//   }
-// }));
+app.use(session({
+  store: new pgSession({
+    pgPromise: db
+  }),
+  secret: 'whatever123', // remember to adjust before deploying
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 30 * 24 * 60 * 60 * 1000 //Adjusts max time of session to 30 days
+  }
+}));
 
 app.use(express.static('public')); // all static files will be served from public folder
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
-// app.use((req, res, next) => {
-//   let isLoggedIn = req.session.user ? true : false;
-//   console.log(isLoggedIn);
-//   next();
-// })
+app.use((req, res, next) => {
+  let isLoggedIn = req.session.user ? true : false;
+  console.log(isLoggedIn);
+  next();
+})
 
 // REQUIRE MODELS AND VIEWS FUNCTIONS
 const page = require(`./views/page`);
@@ -49,7 +49,7 @@ function protectRoute(req, res, next) {
     next();
   }
   else {
-    res.redirect('/login');
+    res.redirect('/');
   }
 }
 
@@ -57,26 +57,61 @@ function protectRoute(req, res, next) {
 
 // ROOT
 app.get('/', (req, res) => {
-
+  res.send(
+    page(`
+      ${helper.header('HEY', false)}
+      ${helper.loginForm()}
+      ${helper.registrationForm()}
+      ${helper.ourMission()}
+    `)
+  )
 });
 
 // REGISTER // post only
 app.post(`/register`, (req, res) => {
-  // res.send(page(``));
+  User.addUser(req.body.displayName, req.body.email, req.body.password)
+    .then(user => {
+      req.session.user = user;
+      console.log(req.session.user);
+      res.redirect(`/user/${user.id}/home`);
+    })
 });
 
 // LOGIN // Post only
 app.post(`/login`, (req, res) => {
-  // res.send(page(``));
+  const email = req.body.email;
+  const password = req.body.password;
+  User.getByEmail(email)
+    .catch(err => {
+      console.log(err);
+    })
+    .then(user => {
+      console.log(user);
+      const didMatch = user.checkPassword(password);
+      console.log(didMatch);
+
+      if (didMatch) {
+        req.session.user = user;
+        console.log(req.session.user);
+        res.redirect(`/user/${user.id}/home`);
+      }
+      else {
+        res.redirect(`/`);
+      }
+    })
+
 });
 
 // UserHOME
-app.get(`/user/:id([0-9]+)/home`, (req, res) => {
-  // res.send(page(``));
+app.get(`/user/:id([0-9]+)/home`, protectRoute, (req, res) => {
+  User.getById(req.params.id)
+    .then(user => {
+      res.send(page(`${user.displayname}`));
+    })
 });
 
 // QUESTIONS
-app.get(`/user/:id([0-9]+)/questions`, (req, res) => {
+app.get(`/user/:id([0-9]+)/questions`, protectRoute, (req, res) => {
   // 
 });
 
