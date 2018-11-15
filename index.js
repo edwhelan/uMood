@@ -71,8 +71,13 @@ app.post(`/login`, (req, res) => {
 });
 
 // UserHOME
-app.get(`/home`, (req, res) => {
+app.get(`/user/:id([0-9]+)/home`, (req, res) => {
   // res.send(page(``));
+});
+
+// QUESTIONS
+app.get(`/user/:id([0-9]+)/questions`, (req, res) => {
+  // 
 });
 
 

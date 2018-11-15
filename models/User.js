@@ -17,7 +17,8 @@ class User {
     return db.one(`insert into users
     (displayname, emailaddress, password)
         values
-    ($1, $2, $3)`,
+    ($1, $2, $3), 
+    returning id`,
       [displayname, emailaddress, password])
       .then(data => {
         const u = new User(data.id, displayname, emailaddress);
@@ -45,8 +46,27 @@ class User {
   // UPDATE
   updateDisplayName(newName) {
     this.displayname = newName;
-    // sql query
-    [this.id, newName]
+    return db.one(`
+    update users
+    set displayname=$1
+    where id=$2`, [newName, this.id]
+    )
+  }
+
+  updateEmail(newEmail) {
+    return db.one(`
+    update users
+    set emailaddress=$1
+    where id=$2`, [newEmail, this.id]
+    )
+  }
+
+  updatePassword(newPassword) {
+    return db.one(`
+    update users
+    set password=$1
+    where id=$2`, [newPassword, this.id]
+    )
   }
 
 
