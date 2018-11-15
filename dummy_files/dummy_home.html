@@ -5,6 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+
+    <!-- establishing styles for the accordion list within the HTML file; will use separate stylesheet for MVP -->
+    <style>
+    .accordion {
+        background-color: #eee;
+        color: #444;
+        cursor: pointer;
+        padding: 18px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        outline: none;
+        font-size: 15px;
+        transition: 0.4s;
+    }
+
+    .active, .accordion:hover {
+        background-color: #ccc;
+    }
+
+    .panel {
+        padding: 0 18px;
+        display: none;
+        background-color: white;
+        overflow: hidden;
+    }
+    </style>
 </head>
 <body>
 
@@ -24,8 +51,39 @@
             <a href="#">Link 4</a> <br>
         </p>
     </div>
+
+    <div class="userNotesCollection">
+        <button class="accordion">10/31/2018</button>
+        <div class="panel">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam voluptate repellat nostrum quis eum assumenda ducimus expedita modi facilis, recusandae voluptatibus. Earum fugiat perspiciatis provident possimus. Assumenda iusto numquam aliquam?
+            </p>
+        </div>
+        <button class="accordion">11/02/2018</button>
+        <div class="panel">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate consectetur ea quaerat hic obcaecati. Neque est dicta perferendis, voluptatum suscipit iste, vero quasi aperiam nam, quo omnis laboriosam saepe natus!
+            </p>
+        </div>
+    </div>
     
+    <script>
+        var acc = document.getElementsByClassName("accordion");
+        var i;
+            
+        for (i = 0; i < acc.length; i++) {
+            acc[i].addEventListener("click", function() {
+                this.classList.toggle("active");
+                var panel = this.nextElementSibling;
+                if (panel.style.display === "block") {
+                    panel.style.display = "none";
+                } else {
+                    panel.style.display = "block";
+                }
+            });
+        }
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <script src="./Chart.js tests/test.js"></script>
+    <script src="./test.js"></script>
 </body>
 </html>
