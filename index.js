@@ -80,6 +80,12 @@ app.get(`/user/:id([0-9]+)/questions`, (req, res) => {
   // 
 });
 
+// LOGOUT
+app.post(`/logout`, (req, res) => {
+  req.session.destroy();
+  res.redirect('/');
+})
+
 
 // LISTEN ON PORT
 app.listen(3000, () => {
