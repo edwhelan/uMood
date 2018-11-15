@@ -53,6 +53,15 @@ function protectRoute(req, res, next) {
   }
 }
 
+// function protectUser(req, res, next) {
+//   if (req.params.id === req.session.user.id) {
+//     next();
+//   }
+//   else {
+//     res.redirect(`/`);
+//   }
+// }
+
 // ROUTES
 
 // ROOT
@@ -86,9 +95,7 @@ app.post(`/login`, (req, res) => {
       console.log(err);
     })
     .then(user => {
-      console.log(user);
       const didMatch = user.checkPassword(password);
-      console.log(didMatch);
 
       if (didMatch) {
         req.session.user = user;
@@ -106,8 +113,10 @@ app.post(`/login`, (req, res) => {
 app.get(`/user/:id([0-9]+)/home`, protectRoute, (req, res) => {
   User.getById(req.params.id)
     .then(user => {
-      res.send(page(`${user.displayname}`));
-    })
+      res.send(page(`
+        ${helper.header('Hello ' + user.displayname, req.session.user)}
+      `));
+    });
 });
 
 // QUESTIONS
