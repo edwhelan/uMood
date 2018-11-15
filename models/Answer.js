@@ -22,13 +22,15 @@ class Answer {
   }
 
   // RETRIEVE
-  static getAnswerByDate(date) {
+  static getAnswerByDate(id, date) {
     // sql query
-    [date]
+    return db.any(`select * from answers
+    inner join
+    users u
+    on u.id = user_id
+    where u.id = $1 AND date = $2`, [id, date])
       .then(result => {
-        return result
-        // const a = new Answer(result.id, result.answer, result.date);
-        // return a;
+        return result;
       })
   }
 

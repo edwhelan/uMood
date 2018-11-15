@@ -57,10 +57,6 @@ function protectRoute(req, res, next) {
 
 // ROOT
 app.get('/', (req, res) => {
-  Health.getByDate('2018-12-25', 1)
-    .then(health => {
-      res.send(health);
-    })
 
 });
 
