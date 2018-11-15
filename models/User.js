@@ -2,11 +2,11 @@ const db = require(`./db`);
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 class User {
-  constructor(id, displayname, emailaddress, password) {
+  constructor(id, displayname, emailaddress, passHash) {
     this.id = id,
       this.displayname = displayname,
       this.emailaddress = emailaddress,
-      this.password = password
+      this.passHash = passHash
   }
 
   // CREATE
@@ -17,8 +17,9 @@ class User {
     return db.one(`insert into users
     (displayname, emailaddress, password)
         values
-    ($1, $2, $3)`,
-      [displayname, emailaddress, password])
+    ($1, $2, $3)
+    returning id`,
+      [displayname, emailaddress, hash])
       .then(data => {
         const u = new User(data.id, displayname, emailaddress);
         return u;
@@ -41,12 +42,44 @@ class User {
       })
   }
 
+  static getByEmail(email) {
+    return db.one(`
+      select * from users where emailaddress ilike '$1:raw'`, [email])
+      .then(result => {
+        const u = new User(result.id, result.displayname, result.emailaddress, result.password);
+        return u;
+      });
+  }
+
+  checkPassword(password) {
+    return bcrypt.compareSync(password, this.passHash);
+  }
+
 
   // UPDATE
   updateDisplayName(newName) {
     this.displayname = newName;
-    // sql query
-    [this.id, newName]
+    return db.one(`
+    update users
+    set displayname=$1
+    where id=$2`, [newName, this.id]
+    )
+  }
+
+  updateEmail(newEmail) {
+    return db.one(`
+    update users
+    set emailaddress=$1
+    where id=$2`, [newEmail, this.id]
+    )
+  }
+
+  updatePassword(newPassword) {
+    return db.one(`
+    update users
+    set password=$1
+    where id=$2`, [newPassword, this.id]
+    )
   }
 
 
