@@ -43,6 +43,11 @@ const Health = require(`./models/Health`);
 const Question = require(`./models/Questions`);
 const Answer = require(`./models/Answer`);
 
+const d = new Date();
+let year = d.getFullYear();
+let month = d.getMonth() + 1;
+let date = d.getDate();
+
 function protectRoute(req, res, next) {
   let isLoggedIn = req.session.user ? true : false;
   if (isLoggedIn) {
@@ -68,7 +73,7 @@ function protectRoute(req, res, next) {
 app.get('/', (req, res) => {
   res.send(
     page(`
-      ${helper.header('HEY', false)}
+      ${helper.header('uMood', false)}
       ${helper.loginForm()}
       ${helper.registrationForm()}
       ${helper.ourMission()}
@@ -82,7 +87,7 @@ app.post(`/register`, (req, res) => {
     .then(user => {
       req.session.user = user;
       console.log(req.session.user);
-      res.redirect(`/user/${user.id}/home`);
+      res.redirect(`/${user.id}/home`);
     })
 });
 
@@ -100,7 +105,7 @@ app.post(`/login`, (req, res) => {
       if (didMatch) {
         req.session.user = user;
         console.log(req.session.user);
-        res.redirect(`/user/${user.id}/home`);
+        res.redirect(`/${req.session.user.id}/home`);
       }
       else {
         res.redirect(`/`);
@@ -110,19 +115,38 @@ app.post(`/login`, (req, res) => {
 });
 
 // UserHOME
-app.get(`/user/:id([0-9]+)/home`, protectRoute, (req, res) => {
-  User.getById(req.params.id)
+app.get(`/:id([0-9]+)/home`, protectRoute, (req, res) => {
+  User.getById(req.session.user.id)
     .then(user => {
       res.send(page(`
         ${helper.header('Hello ' + user.displayname, req.session.user)}
+        ${helper.homePage('Hey', req.session.user.id)}
       `));
     });
 });
 
 // QUESTIONS
-app.get(`/user/:id([0-9]+)/questions`, protectRoute, (req, res) => {
-  // 
+app.get(`/:id([0-9]+)/questions`, protectRoute, (req, res) => {
+  let questions = ``;
+  Question.getQuestions()
+    .then(array => {
+      array.forEach(question => {
+        questions += helper.drawQues(question.questiontext, question.id);
+      })
+      res.send(page(`${helper.questions(questions)}`));
+    });
 });
+
+app.post(`/answers`, (req, res) => {
+  let today = `${year}-${month}-${date}`;
+  Answer.add(req.body.name1, today, req.session.user.id, 1)
+  Answer.add(req.body.name2, today, req.session.user.id, 2)
+  Answer.add(req.body.name3, today, req.session.user.id, 3)
+  Answer.add(req.body.name4, today, req.session.user.id, 4)
+  Answer.add(req.body.name5, today, req.session.user.id, 5)
+
+  res.redirect(`/${req.session.user.id}/home`);
+})
 
 // LOGOUT
 app.post(`/logout`, (req, res) => {
