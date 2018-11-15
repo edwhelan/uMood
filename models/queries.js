@@ -63,16 +63,44 @@ function getHealthByDate(date, id) {
   ).then(console.table)
 }
 //get answer by date
-// select
-//       u.name,
-//       comment
-//       from comments
-//         inner join
-//           users u 
-//           on u.id = commenter_id
-//       where u.id = $1`, [commenter_id]
-// UPDATE
+function getAnswerByDate(id, date) {
+  return db.any(`
+  select
+  *
+  from answers
+    inner join
+      users u 
+      on u.id = user_id 
+  where u.id = $1 and date=$2` [id, date]
+  ).then(console.table)
+}
 
+// UPDATE
+//update display name
+function updateUserDisplayName(newName) {
+  return db.one(`
+update users
+set displayname=$1
+where id=$2`, [newName, this.id]
+  )
+}
+
+//update email 
+function updateUserEmail(newEmail) {
+  return db.one(`
+update users
+set emailaddress=$1
+where id=$2`, [newEmail, this.id]
+  )
+}
+
+function updatePassword(newPassword) {
+  return db.one(`
+update users
+set password=$1
+where id=$2`, [newPassword, this.id]
+  )
+}
 // DELETE
 
 module.exports = {
@@ -82,4 +110,5 @@ module.exports = {
   getQuestions,
   getUserByID,
   getHealthByDate,
+  getAnswerByDate,
 }
