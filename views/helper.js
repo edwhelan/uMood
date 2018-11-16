@@ -1,3 +1,5 @@
+let Answer = require(`../models/Answer`);
+
 function header(content, isLoggedIn = false) {
   return `
     <header>
@@ -122,6 +124,24 @@ function drawQues(question, quId) {
 }
 
 
+// THIS FUNCTION RETURNS THE ARRAY WITH ALL THE DATA FOR THE LAST WEEK
+function gettingAnswers(user) {
+  let promiseArray = [];
+  for (let i = 1; i < 6; i++) {
+    promiseArray.push(Answer.answerByQuestion(user.id, i))
+  }
+  return Promise.all(promiseArray)
+    .then(answers => {
+      return answers.map(week => {
+        // return day;
+        return week.map(day => {
+          return { date: day.date, question: day.question_id, answer: day.answer }
+        })
+      })
+    })
+}
+
+
 module.exports = {
   header,
   drawQues,
@@ -129,5 +149,6 @@ module.exports = {
   registrationForm,
   ourMission,
   homePage,
-  questions
+  questions,
+  gettingAnswers
 }
