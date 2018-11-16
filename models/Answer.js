@@ -34,6 +34,20 @@ class Answer {
       })
   }
 
+  static answerByQuestion(user_id, question_id) {
+    return db.any(`
+      select * from answers
+      where user_id = $1
+      AND 
+      question_id = $2
+      order by date asc
+      limit 7`, [user_id, question_id]
+    )
+      .then(result => {
+        return result;
+      })
+  }
+
   // UPDATE
   // None
 

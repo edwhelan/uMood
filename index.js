@@ -45,8 +45,11 @@ const Answer = require(`./models/Answer`);
 
 const d = new Date();
 let year = d.getFullYear();
-let month = d.getMonth() + 1;
-let date = d.getDate();
+// let month = d.getMonth() + 1;
+// let date = d.getDate();
+let month = 12;
+let date = 31;
+let today = `${year}-${month}-${date}`;
 
 function protectRoute(req, res, next) {
   let isLoggedIn = req.session.user ? true : false;
@@ -66,6 +69,7 @@ function protectRoute(req, res, next) {
 //     res.redirect(`/`);
 //   }
 // }
+
 
 // ROUTES
 
@@ -116,14 +120,17 @@ app.post(`/login`, (req, res) => {
 
 // UserHOME
 app.get(`/:id([0-9]+)/home`, protectRoute, (req, res) => {
-  User.getById(req.session.user.id)
-    .then(user => {
+  let user = req.session.user;
+  helper.gettingAnswers(user)
+    .then(answersArray => {
+      console.log(answersArray);
       res.send(page(`
-        ${helper.header('Hello ' + user.displayname, req.session.user)}
-        ${helper.homePage('Hey', req.session.user.id)}
-      `));
-    });
+    ${helper.header('Hello ' + user.displayname, req.session.user)}
+    ${helper.homePage(answersArray, user.id)}
+    `));
+    })
 });
+
 
 // QUESTIONS
 app.get(`/:id([0-9]+)/questions`, protectRoute, (req, res) => {
@@ -138,7 +145,6 @@ app.get(`/:id([0-9]+)/questions`, protectRoute, (req, res) => {
 });
 
 app.post(`/answers`, (req, res) => {
-  let today = `${year}-${month}-${date}`;
   Answer.add(req.body.name1, today, req.session.user.id, 1)
   Answer.add(req.body.name2, today, req.session.user.id, 2)
   Answer.add(req.body.name3, today, req.session.user.id, 3)
