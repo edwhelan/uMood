@@ -117,14 +117,18 @@ app.post(`/login`, (req, res) => {
 
 // UserHOME
 app.get(`/:id([0-9]+)/home`, protectRoute, (req, res) => {
-  User.getById(req.session.user.id)
-    .then(user => {
+  let user = req.session.user.id
+  Notes.getAllNotes(req.session.user.id)
+    .then(allNotes => {
+      console.log(allNotes)
       res.send(page(`
-        ${helper.header('Hello ' + user.displayname, req.session.user)}
-        ${helper.homePage('Hey', req.session.user.id)}
-        ${noteForm()}
-      `));
-    });
+      ${helper.header('Hello ' + user.displayname, req.session.user)}
+      ${helper.homePage('Hey', req.session.user.id)}
+      ${noteForm(allNotes)}
+    `));
+    })
+
+
 });
 
 // QUESTIONS

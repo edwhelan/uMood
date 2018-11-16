@@ -23,6 +23,16 @@ class Notes {
   }
 
   // RETRIEVE
+  static getAllNotes(id) {
+    return db.any(`
+    select *
+    from Notes
+    where user_id=$1
+    order by date asc`, [id]
+    )
+  }
+
+
   static getByDate(date, id) {
     // sql query
     return db.any(`
