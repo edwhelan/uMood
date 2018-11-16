@@ -120,14 +120,16 @@ app.post(`/login`, (req, res) => {
 
 // UserHOME
 app.get(`/:id([0-9]+)/home`, protectRoute, (req, res) => {
-  User.getById(req.session.user.id)
-    .then(user => {
+  let user = req.session.user;
+  helper.gettingAnswers(user)
+    .then(answersArray => {
+      console.log(answersArray);
       res.send(page(`
-        ${helper.header('Hello ' + user.displayname, req.session.user)}
-        ${helper.homePage('', user.id)}
-      `));
+    ${helper.header('Hello ' + user.displayname, req.session.user)}
+    ${helper.homePage(answersArray, user.id)}
+    `));
     })
-})
+});
 
 
 // QUESTIONS
