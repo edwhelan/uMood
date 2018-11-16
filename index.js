@@ -37,6 +37,7 @@ app.use((req, res, next) => {
 // REQUIRE MODELS AND VIEWS FUNCTIONS
 const page = require(`./views/page`);
 const helper = require(`./views/helper`);
+const noteForm = require(`./views/noteForm`);
 
 const User = require(`./models/User`);
 const Notes = require(`./models/Notes`);
@@ -121,15 +122,19 @@ app.post(`/login`, (req, res) => {
 // UserHOME
 app.get(`/:id([0-9]+)/home`, protectRoute, (req, res) => {
   let user = req.session.user;
-  helper.gettingAnswers(user)
-    .then(answersArray => {
-      console.log(answersArray);
-      res.send(page(`
-    ${helper.header('Hello ' + user.displayname, req.session.user)}
-    ${helper.homePage(answersArray, user.id)}
-    `));
+  helper.gettingAnswers(req.session.user)
+    .then(answers => {
+      Notes.getAllNotes(req.session.user.id)
+        .then(notes => {
+          console.log(answers);
+          res.send(page(`
+        ${helper.header('Hello ' + user.displayname, req.session.user)}
+        ${helper.homePage(answers, req.session.user.id)}
+        ${noteForm(notes)}
+        `));
+        })
     })
-});
+})
 
 
 // QUESTIONS
@@ -160,6 +165,15 @@ app.post(`/logout`, (req, res) => {
   res.redirect('/');
 })
 
+
+// NOTES // post only
+// allow user 
+app.post(`/notes/add`, (req, res) => {
+  let today = `${year}-${month}-${date}`;
+  Notes.add(today, req.body.noteText, req.session.user.id)
+  console.log(req.body.noteText, req.session.user.id)
+  res.redirect(`/${req.session.user.id}/home`);
+})
 
 // LISTEN ON PORT
 app.listen(3000, () => {

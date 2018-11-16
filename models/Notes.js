@@ -12,10 +12,10 @@ class Notes {
     // sql query
     return db.any(`
     insert into notes 
-      (date, notes, user_id)
+      (date, note, user_id)
         values
-      ($1, $2, $3, $4)`,
-      [, date, note, user_id])
+      ($1, $2, $3)`,
+      [date, note, user_id])
       .then(result => {
         const h = new Notes(result.id, date, note, user_id);
         return h;
@@ -23,6 +23,16 @@ class Notes {
   }
 
   // RETRIEVE
+  static getAllNotes(id) {
+    return db.any(`
+    select *
+    from Notes
+    where user_id=$1
+    order by date asc`, [id]
+    )
+  }
+
+
   static getByDate(date, id) {
     // sql query
     return db.any(`

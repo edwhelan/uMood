@@ -1,13 +1,13 @@
 insert into users
   (displayname, emailaddress, password)
       values
-  ('beWell', 'bigboy@aol.com', 'password123'),
-  ('feelingsDude', 'biggirl@aol.com', 'password124'),
-  ('hachaWacha', 'bigfriend@aol.com', 'password213'),
-  ('bingoBango', 'bigballer@aol.com', 'password23'),
-  ('ColdWeatherLuvr', 'bigbig@aol.com', 'password13'),
-  ('bopper95', 'bigpapa@aol.com', 'password15'),
-  ('capncrunch', 'bigmama@aol.com', 'password12'),
+  ('beWell', 'bigboy@aol.com', '$2b$10$A1ydboQiPIZt40HLbOL8Fu7y8LeOvYS83w80DT0f6ViSLfJwlnQzq'),
+  ('feelingsDude', 'biggirl@aol.com', '$2b$10$A1ydboQiPIZt40HLbOL8Fu7y8LeOvYS83w80DT0f6ViSLfJwlnQzq'),
+  ('hachaWacha', 'bigfriend@aol.com', '$2b$10$A1ydboQiPIZt40HLbOL8Fu7y8LeOvYS83w80DT0f6ViSLfJwlnQzq'),
+  ('bingoBango', 'bigballer@aol.com', '$2b$10$A1ydboQiPIZt40HLbOL8Fu7y8LeOvYS83w80DT0f6ViSLfJwlnQzq'),
+  ('ColdWeatherLuvr', 'bigbig@aol.com', '$2b$10$A1ydboQiPIZt40HLbOL8Fu7y8LeOvYS83w80DT0f6ViSLfJwlnQzq'),
+  ('bopper95', 'bigpapa@aol.com', '$2b$10$A1ydboQiPIZt40HLbOL8Fu7y8LeOvYS83w80DT0f6ViSLfJwlnQzq'),
+  ('capncrunch', 'bigmama@aol.com', '$2b$10$A1ydboQiPIZt40HLbOL8Fu7y8LeOvYS83w80DT0f6ViSLfJwlnQzq'),
   ('lorenzo', 'lorenzo@lorenzo.com', '$2b$10$AbxaPCvE3zyklTArdpgje.zU60amFeE5ouqjPiIs06UH0hg2raqrG');
 
 
@@ -21,10 +21,10 @@ insert into users
     ('2018-12-25', 'Today was a ajshdkajshd day', 5),
     ('2018-12-25', 'Today was a lsadjalsjdas day', 6),
     ('2018-12-25', 'Today was a red day', 7),
-    ( '2018-12-25', 'Today was a black day', 1),
+    ( '2018-12-26', 'Today was a black day', 1),
     ('2018-12-25', 'Today was a happy day', 2),
     ('2018-12-25', 'Today was a sad day', 3),
-    ('2018-12-25', 'Today was a feeling day', 1),
+    ('2018-12-27', 'Today was a feeling day', 1),
     ('2018-12-25', 'Today was a GREAT day', 2),
     ('2018-12-25', 'Today was a day', 6);
 

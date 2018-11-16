@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,14 +9,15 @@
 
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
 
-    <link rel="stylesheet" href="/Users/samerickson 1 2/DigitalCrafts/uMood/public/stylesheets/index.css">
+    <link rel="stylesheet" href="../public/stylesheets/index.css">
 </head>
+
 <body>
 
-<!-- -------------------- -->
-<!-- /HOME -->
-<!-- -------------------- -->
-<nav class="HomeNav">
+    <!-- -------------------- -->
+    <!-- /HOME -->
+    <!-- -------------------- -->
+    <nav class="HomeNav">
         <a href="/logout">Logout</a>
     </nav>
     <canvas id="line-chart" width="800" height="450"></canvas>
@@ -30,26 +32,40 @@
     </div>
 
     <div class="userNotesCollection">
+        <button class="accordion">Add To Notes</button>
+        <div class="panel">
+            <form action="/notes/add" method="POST">
+                <label>
+                    Notes:
+                    <input type="text" name="noteText">
+                </label>
+                <br>
+                <input type="submit" value="Add To Notes">
+            </form>
+        </div>
         <button class="accordion">10/31/2018</button>
         <div class="panel">
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam voluptate repellat nostrum quis eum assumenda ducimus expedita modi facilis, recusandae voluptatibus. Earum fugiat perspiciatis provident possimus. Assumenda iusto numquam aliquam?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam voluptate repellat nostrum quis eum assumenda ducimus
+                expedita modi facilis, recusandae voluptatibus. Earum fugiat perspiciatis provident possimus. Assumenda iusto
+                numquam aliquam?
             </p>
         </div>
         <button class="accordion">11/02/2018</button>
         <div class="panel">
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate consectetur ea quaerat hic obcaecati. Neque est dicta perferendis, voluptatum suscipit iste, vero quasi aperiam nam, quo omnis laboriosam saepe natus!
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate consectetur ea quaerat hic obcaecati. Neque est dicta
+                perferendis, voluptatum suscipit iste, vero quasi aperiam nam, quo omnis laboriosam saepe natus!
             </p>
         </div>
     </div>
-    
+
     <script>
         var acc = document.getElementsByClassName("accordion");
         var i;
-            
+
         for (i = 0; i < acc.length; i++) {
-            acc[i].addEventListener("click", function() {
+            acc[i].addEventListener("click", function () {
                 this.classList.toggle("active");
                 var panel = this.nextElementSibling;
                 if (panel.style.display === "block") {
@@ -63,4 +79,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
     <script src="./test.js"></script>
 </body>
+
 </html>
