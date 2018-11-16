@@ -45,8 +45,10 @@ const Answer = require(`./models/Answer`);
 
 const d = new Date();
 let year = d.getFullYear();
-let month = d.getMonth() + 1;
-let date = d.getDate();
+// let month = d.getMonth() + 1;
+// let date = d.getDate();
+let month = 12;
+let date = 31;
 let today = `${year}-${month}-${date}`;
 
 function protectRoute(req, res, next) {
@@ -120,15 +122,13 @@ app.post(`/login`, (req, res) => {
 app.get(`/:id([0-9]+)/home`, protectRoute, (req, res) => {
   User.getById(req.session.user.id)
     .then(user => {
-      Answer.getAnswerByDate(user.id, `${year}-${month}-${date - 1}`).then(console.log);
-      // let day2 = Answer.getAnswerByDate(user.id, `${year}-${month}-${date - 6}`);
-      // let day3 = Answer.getAnswerByDate(user.id, `${year}-${month}-${date - 5}`);
-      // res.send(page(`
-      //   ${helper.header('Hello ' + user.displayname, req.session.user)}
-      //   ${helper.homePage('', req.session.user.id)}
-      // `));
-    });
-});
+      res.send(page(`
+        ${helper.header('Hello ' + user.displayname, req.session.user)}
+        ${helper.homePage('', user.id)}
+      `));
+    })
+})
+
 
 // QUESTIONS
 app.get(`/:id([0-9]+)/questions`, protectRoute, (req, res) => {
