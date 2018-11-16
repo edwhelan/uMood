@@ -39,7 +39,7 @@ const page = require(`./views/page`);
 const helper = require(`./views/helper`);
 
 const User = require(`./models/User`);
-const Health = require(`./models/Health`);
+const Notes = require(`./models/Notes`);
 const Question = require(`./models/Questions`);
 const Answer = require(`./models/Answer`);
 
