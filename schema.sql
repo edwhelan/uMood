@@ -7,11 +7,10 @@ create table users (
 );
 
 -- health table
-create table health (
+create table notes (
   id serial primary key,
-  dailyscore integer,
   date timestamp,
-  notes varchar(10000),
+  note varchar(10000),
   user_id integer references users (id)
 );
 

@@ -1,24 +1,23 @@
 const db = require(`./db`);
 
-class Health {
-  constructor(id, dailyscore, date, notes) {
+class Notes {
+  constructor(id, date, note) {
     this.id = id,
-      this.dailyscore = dailyscore,
       this.date = date,
-      this.notes = notes
+      this.note = note
   }
 
   // CREATE
-  static add(dailyscore, date, notes, user_id) {
+  static add(date, note, user_id) {
     // sql query
     return db.any(`
-    insert into health 
-      (dailyscore, date, notes, user_id)
+    insert into notes 
+      (date, notes, user_id)
         values
       ($1, $2, $3, $4)`,
-      [dailyscore, date, notes, user_id])
+      [, date, note, user_id])
       .then(result => {
-        const h = new Health(result.id, dailyscore, date, notes, user_id);
+        const h = new Notes(result.id, date, note, user_id);
         return h;
       })
   }
@@ -30,7 +29,7 @@ class Health {
     select 
     *
     from
-    health
+    notes
       inner join
       users u
       on u.id = user_id
@@ -38,7 +37,7 @@ class Health {
       [date, id])
       .then(result => {
         return result;
-        // const h = new Health(result.id, result.dailyscore, result.date, result.notes, result.user_id);
+        // const h = new Notes(result.id, result., result.date, result.notes, result.user_id);
         // return h;
       })
   }
@@ -49,4 +48,4 @@ class Health {
   // No methods here
 }
 
-module.exports = Health;
+module.exports = Notes;
