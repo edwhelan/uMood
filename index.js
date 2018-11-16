@@ -37,6 +37,7 @@ app.use((req, res, next) => {
 // REQUIRE MODELS AND VIEWS FUNCTIONS
 const page = require(`./views/page`);
 const helper = require(`./views/helper`);
+const noteForm = require(`./views/noteForm`);
 
 const User = require(`./models/User`);
 const Notes = require(`./models/Notes`);
@@ -121,6 +122,7 @@ app.get(`/:id([0-9]+)/home`, protectRoute, (req, res) => {
       res.send(page(`
         ${helper.header('Hello ' + user.displayname, req.session.user)}
         ${helper.homePage('Hey', req.session.user.id)}
+        ${noteForm()}
       `));
     });
 });
@@ -154,6 +156,15 @@ app.post(`/logout`, (req, res) => {
   res.redirect('/');
 })
 
+
+// NOTES // post only
+// allow user 
+app.post(`/notes/add`, (req, res) => {
+  let today = `${year}-${month}-${date}`;
+  Notes.add(today, req.body.noteText, req.session.user.id)
+  console.log(req.body.noteText, req.session.user.id)
+  res.redirect(`/${req.session.user.id}/home`);
+})
 
 // LISTEN ON PORT
 app.listen(3000, () => {

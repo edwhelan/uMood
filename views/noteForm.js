@@ -1,37 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Home</title>
-
-    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-
-    <link rel="stylesheet" href="../public/stylesheets/index.css">
-</head>
-
-<body>
-
-    <!-- -------------------- -->
-    <!-- /HOME -->
-    <!-- -------------------- -->
-    <nav class="HomeNav">
-        <a href="/logout">Logout</a>
-    </nav>
-    <canvas id="line-chart" width="800" height="450"></canvas>
-    <div class="Resources">
-        <h3>Resources (will customize towards user over time)</h3>
-        <p>
-            <a href="#">Link 1</a> <br>
-            <a href="#">Link 2</a> <br>
-            <a href="#">Link 3</a> <br>
-            <a href="#">Link 4</a> <br>
-        </p>
-    </div>
-
-    <div class="userNotesCollection">
+function notesForm() {
+  return `
+  <div class="userNotesCollection">
         <button class="accordion">Add To Notes</button>
         <div class="panel">
             <form action="/notes/add" method="POST">
@@ -76,8 +45,7 @@
             });
         }
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-    <script src="./test.js"></script>
-</body>
+  `;
+}
 
-</html>
+module.exports = notesForm;
