@@ -137,20 +137,23 @@ app.get(`/:id([0-9]+)/home`, protectRoute, (req, res) => {
     })
 })
 
-
+let hasBeenSent = false;
 
 // QUESTIONS
 app.get(`/:id([0-9]+)/questions`, protectRoute, (req, res) => {
-
-  let questions = ``;
-  Question.getQuestions()
-    .then(array => {
-      array.forEach(question => {
-        questions += helper.drawQues(question.questiontext, question.id);
-      })
-      res.send(page(`${helper.questions(questions)}`));
-    });
-
+  if (hasBeenSent === false) {
+    let questions = ``;
+    Question.getQuestions()
+      .then(array => {
+        hasBeenSent = true;
+        array.forEach(question => {
+          questions += helper.drawQues(question.questiontext, question.id);
+        })
+        res.send(page(`${helper.questions(questions)}`));
+      });
+  } else {
+    res.redirect(`/${req.session.user.id}/home`);
+  }
 });
 
 app.post(`/answers`, (req, res) => {
@@ -159,7 +162,6 @@ app.post(`/answers`, (req, res) => {
   Answer.add(req.body.name3, today, req.session.user.id, 3)
   Answer.add(req.body.name4, today, req.session.user.id, 4)
   Answer.add(req.body.name5, today, req.session.user.id, 5)
-
   res.redirect(`/${req.session.user.id}/home`);
 })
 
