@@ -79,7 +79,7 @@ function protectRoute(req, res, next) {
 app.get('/', (req, res) => {
   res.send(
     page(`
-      ${helper.header('uMood', false)}
+      ${helper.header(false)}
       ${helper.loginForm()}
       ${helper.registrationForm()}
       ${helper.ourMission()}

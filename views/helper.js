@@ -1,15 +1,18 @@
 let Answer = require(`../models/Answer`);
 
-function header(content, isLoggedIn = false) {
+function header(isLoggedIn = false) {
   return `
     <header>
     ${
     isLoggedIn ? logoutButton() : none()
     }
-    ${content}
+
+    <h1>uMood</h1>
     </header>
   `
 }
+
+
 
 function none() {
   return ``;
@@ -21,12 +24,12 @@ function loginForm() {
   return `
   <form action="/login" method="POST">
       <label>
-          Email address:
+          Email address:<br>
           <input type="text" name="email">
       </label>
       <br>
       <label>
-          Password:
+          Password:<br>
           <input type="password" name="password">
       </label>
       <br>
@@ -40,17 +43,17 @@ function registrationForm() {
   return `
   <form action="/register" method="POST">
       <label>
-          Email address:
+          Email address:<br>
           <input type="text" name="email">
       </label>
       <br>
       <label>
-          Display name:
+          Display name:<br>
           <input type="text" name="displayName">
       </label>
       <br>
       <label>
-          Password:
+          Password:<br>
           <input type="password" name="password">
       </label>
       <br>
