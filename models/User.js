@@ -57,7 +57,7 @@ class User {
 
 
   // UPDATE
-  static updateDisplayName(newName, newEmail, id) {
+  static updateDisplayNameAndEmail(newName, newEmail, id) {
     return db.one(`
     update users
     set displayname=$1,
@@ -66,13 +66,6 @@ class User {
     )
   }
 
-  updateEmail(newEmail) {
-    return db.one(`
-    update users
-    set emailaddress=$1
-    where id=$2`, [newEmail, this.id]
-    )
-  }
 
   updatePassword(newPassword) {
     return db.one(`
