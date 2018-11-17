@@ -64,6 +64,7 @@ function logoutButton() {
     <form action='/logout' method='POST'>
       <input type="submit" value="Logout">
     </form>
+    <a href="/user/settings">Settings</a>
   `
 }
 

@@ -1,8 +1,8 @@
 //load form with preloaded information so they can change whatever they want
-function settingsPage(user, email, name) {
+function settingsPage(email, name) {
   return `
 <div class="panel">
-<form action="/${user}/settings" method="POST">
+<form action="/user/settings" method="POST">
     <label>
         Email Address:
         <input type="text" name="emailAddressText" value="${email}">
