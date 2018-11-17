@@ -17,12 +17,16 @@ html, body{
 }
 
 body *{
-  background-color: white;
+  background-color: rgb(215, 215, 215);
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
+a{
+  text-decoration: none;
+  color: #4f4e4e
+}
 
 *{
   /* outline: 1px solid black; */
@@ -30,6 +34,7 @@ body *{
 
 body{
   background-color: white;
+
 }
 
 header{
@@ -50,6 +55,7 @@ form{
   align-items: center;
   margin-top: 30px;
   padding-bottom: 30px;
+
 }
 
 form label{
@@ -63,8 +69,9 @@ form input {
 
 .Mission {
   border-top: 1px solid rgba(0,0,0,0.2);
+  background-color: white;
   /* width: 80%; */
-  padding: 30px 20px 20px 20px;
+  padding: 20px;
   margin: 0;
   display: flex;
   /* outline: 1px solid black; */
@@ -77,6 +84,10 @@ form input {
 footer{
   background-color: aliceblue;
   display: flex;
+}
+
+footer *{
+  background-color: inherit;
 }
 
 .social-links{
@@ -93,11 +104,16 @@ footer{
 }
 
 .icons{
-  width: 100%;
-  padding: 0;
+  width: 90%;
+  padding: 10px 0;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+}
+
+.icons i:hover{
+  transform: scale(1.6);
+  transition: transform 0.25s;
 }
 /* .loginAndRegisterLinks {
     background-color: #0078a8;
