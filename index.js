@@ -46,10 +46,10 @@ const Answer = require(`./models/Answer`);
 
 const d = new Date();
 let year = d.getFullYear();
-// let month = d.getMonth() + 1;
-// let date = d.getDate();
-let month = 12;
-let date = 31;
+let month = d.getMonth() + 1;
+let date = d.getDate();
+// let month = 12;
+// let date = 31;
 let today = `${year}-${month}-${date}`;
 
 function protectRoute(req, res, next) {
@@ -61,6 +61,7 @@ function protectRoute(req, res, next) {
     res.redirect('/');
   }
 }
+
 
 // function protectUser(req, res, next) {
 //   if (req.params.id === req.session.user.id) {
@@ -137,8 +138,10 @@ app.get(`/:id([0-9]+)/home`, protectRoute, (req, res) => {
 })
 
 
+
 // QUESTIONS
 app.get(`/:id([0-9]+)/questions`, protectRoute, (req, res) => {
+
   let questions = ``;
   Question.getQuestions()
     .then(array => {
@@ -147,6 +150,7 @@ app.get(`/:id([0-9]+)/questions`, protectRoute, (req, res) => {
       })
       res.send(page(`${helper.questions(questions)}`));
     });
+
 });
 
 app.post(`/answers`, (req, res) => {
