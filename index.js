@@ -38,6 +38,7 @@ app.use((req, res, next) => {
 const page = require(`./views/page`);
 const helper = require(`./views/helper`);
 const noteForm = require(`./views/noteForm`);
+const settingsPage = require(`./views/settings`);
 
 const User = require(`./models/User`);
 const Notes = require(`./models/Notes`);
@@ -165,6 +166,17 @@ app.post(`/logout`, (req, res) => {
   res.redirect('/');
 })
 
+
+// USER SETTINGS
+app.get(`/user/settings`, protectRoute, (req, res) => {
+  res.send(page(settingsPage(req.session.user.emailaddress, req.session.user.displayname)))
+})
+
+// allow users to change name or email address
+app.post(`/user/settings`, protectRoute, (req, res) => {
+  User.updateDisplayNameAndEmail(req.body.displayNameText, req.body.emailAddressText, req.session.user.id)
+  res.redirect(`/${req.session.user.id}/home`)
+})
 
 // NOTES // post only
 // allow user 
