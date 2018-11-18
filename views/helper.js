@@ -94,19 +94,19 @@ function ourMission() {
 function homePage(greeting, content, user) {
   return `
   <section class="summary">
-  ${greeting}
+  <h3>${greeting}</h3>
   ${content}
   <canvas id="line-chart" width="800" height="450"></canvas>
   <button class="questionsButton"><a href="/${user}/questions">Questions</a></button>
   </section>
   <div class="Resources">
       <h3>Resources (will customize towards user over time)</h3>
-      <p>
-          <a href="#">Link 1</a> <br>
-          <a href="#">Link 2</a> <br>
-          <a href="#">Link 3</a> <br>
-          <a href="#">Link 4</a> <br>
-      </p>
+      <ul>
+          <li><a href="#">Link 1</a></li>
+          <li><a href="#">Link 2</a></li>
+          <li><a href="#">Link 3</a></li>
+          <li><a href="#">Link 4</a></li>
+      </ul>
   </div>
   `;
 }
