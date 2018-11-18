@@ -179,6 +179,7 @@ app.post(`/logout`, (req, res) => {
 app.get(`/user/settings`, protectRoute, (req, res) => {
   res.send(page(`
     ${helper.header()}
+    
     ${settingsPage(req.session.user.emailaddress, req.session.user.displayname)}`))
 })
 

@@ -144,12 +144,13 @@ form input {
   flex-wrap: wrap;
   border:  0;
   justify-content: center;
+  padding: 20px;
 }
 
 .Resources h3{
   width: 100%;
   text-align: center;
-  margin-bottom: 0;
+  margin: 0;
 }
 
 .Resources ul{
@@ -177,7 +178,20 @@ form input {
 /* ==================================== */
 /* SETTINGS FORM STYLES */
 /* ==================================== */
+.setting form{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
 
+.setting input{
+  margin: 10px;
+}
+
+.setting h3{
+  text-align: center;
+  opacity: 0.5;
+}
 
 
 /* ============================ */
