@@ -97,6 +97,15 @@ function homePage(greeting, content, user) {
   <h3>${greeting}</h3>
   ${content}
   <canvas id="line-chart" width="800" height="450"></canvas>
+  <div class="stats">
+    <ul>
+      <li>NUMBER</li>
+      <li>NUMBER</li>
+      <li>ASS</li>
+      <li>NUMBER</li>
+    </ul>
+  </div>
+
   <button class="questionsButton"><a href="/${user}/questions">Questions</a></button>
   </section>
   <div class="Resources">
@@ -114,7 +123,7 @@ function homePage(greeting, content, user) {
 // FUNCTIONS FOR QUESTIONS
 function questions(content) {
   return `
-    <form method="post" action="/answers">
+    <form method="post" action="/answers" class="questionsForm">
       ${content}
       <input type="submit" value="Submit">
     </form>

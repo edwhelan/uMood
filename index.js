@@ -150,7 +150,9 @@ app.get(`/:id([0-9]+)/questions`, protectRoute, (req, res) => {
         array.forEach(question => {
           questions += helper.drawQues(question.questiontext, question.id);
         })
-        res.send(page(`${helper.questions(questions)}`));
+        res.send(page(`
+        ${helper.header(req.session.user)}
+        ${helper.questions(questions)}`));
       });
   } else {
     res.redirect(`/${req.session.user.id}/home`);
@@ -175,7 +177,9 @@ app.post(`/logout`, (req, res) => {
 
 // USER SETTINGS
 app.get(`/user/settings`, protectRoute, (req, res) => {
-  res.send(page(settingsPage(req.session.user.emailaddress, req.session.user.displayname)))
+  res.send(page(`
+    ${helper.header()}
+    ${settingsPage(req.session.user.emailaddress, req.session.user.displayname)}`))
 })
 
 // allow users to change name or email address
