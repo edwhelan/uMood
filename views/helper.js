@@ -3,11 +3,15 @@ let Answer = require(`../models/Answer`);
 function header(isLoggedIn = false) {
   return `
     <header>
+
+    ${
+    isLoggedIn ? settingsLink() : none()
+    }
+    <h1>uMood</h1>
     ${
     isLoggedIn ? logoutButton() : none()
     }
 
-    <h1>uMood</h1>
     </header>
   `
 }
@@ -64,11 +68,15 @@ function registrationForm() {
 
 function logoutButton() {
   return `
-    <form action='/logout' method='POST'>
+    <form action='/logout' method='POST' class="logoutButton">
       <input type="submit" value="Logout">
     </form>
-    <a href="/user/settings">Settings</a>
+    
   `
+}
+
+function settingsLink() {
+  return `<a href="/user/settings">Settings</a>`;
 }
 
 function ourMission() {
@@ -83,11 +91,14 @@ function ourMission() {
 }
 
 // FUNCTIONS FOR USER HOME
-function homePage(content, user) {
+function homePage(greeting, content, user) {
   return `
+  <section class="summary">
+  ${greeting}
   ${content}
   <canvas id="line-chart" width="800" height="450"></canvas>
-  <a href="/${user}/questions">Questions</a>
+  <button class="questionsButton"><a href="/${user}/questions">Questions</a></button>
+  </section>
   <div class="Resources">
       <h3>Resources (will customize towards user over time)</h3>
       <p>
@@ -150,6 +161,7 @@ module.exports = {
   header,
   drawQues,
   loginForm,
+  settingsLink,
   registrationForm,
   ourMission,
   homePage,

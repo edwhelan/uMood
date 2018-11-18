@@ -130,8 +130,8 @@ app.get(`/:id([0-9]+)/home`, protectRoute, (req, res) => {
         .then(notes => {
           console.log(answers);
           res.send(page(`
-        ${helper.header('Hello ' + user.displayname, req.session.user)}
-        ${helper.homePage(answers, req.session.user.id)}
+        ${helper.header(req.session.user)}
+        ${helper.homePage('Welcome back, ' + user.displayname, `<img src="../images/graphImage.png" class="placeholderImg">`, req.session.user.id)}
         ${noteForm(notes)}
         `));
         })
