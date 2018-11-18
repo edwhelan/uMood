@@ -49,6 +49,8 @@ function page(content) {
         </footer>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
         <script src="./Chart.js tests/test.js"></script>
+        <script src="../scripts/index.js"></script>
+
       </body>
       
     </html>
