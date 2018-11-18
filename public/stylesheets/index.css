@@ -1,14 +1,121 @@
 html {
     box-sizing: border-box;
-    padding: 10px;
+    /* padding: 10px; */
     font-family: 'Montserrat', sans-serif;
 }
+
+html, body{
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
   *, *:before, *:after {
     box-sizing: inherit;
     background-color: #d7f4ff;
 }
 
-.loginAndRegisterLinks {
+body *{
+  background-color: rgb(215, 215, 215);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+a{
+  text-decoration: none;
+  color: #4f4e4e
+}
+
+*{
+  /* outline: 1px solid black; */
+}
+
+body{
+  background-color: white;
+
+}
+
+header{
+  background-color: aliceblue;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+
+}
+header h1{
+  background-color: inherit;
+}
+
+form{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 30px;
+  padding-bottom: 30px;
+
+}
+
+form label{
+  background-color:white;
+}
+
+form input {
+  background-color: #eee;
+  border-radius: 5px;
+}
+
+.Mission {
+  border-top: 1px solid rgba(0,0,0,0.2);
+  background-color: white;
+  /* width: 80%; */
+  padding: 20px;
+  margin: 0;
+  display: flex;
+  /* outline: 1px solid black; */
+}
+
+.Mission p{ 
+  background-color: #f7f7f7;
+}
+
+footer{
+  background-color: aliceblue;
+  display: flex;
+}
+
+footer *{
+  background-color: inherit;
+}
+
+.social-links{
+  background-color: inherit;
+  width: 100%;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.social-links li{
+  width: 30%;
+}
+
+.icons{
+  width: 90%;
+  padding: 10px 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.icons i:hover{
+  transform: scale(1.6);
+  transition: transform 0.25s;
+}
+/* .loginAndRegisterLinks {
     background-color: #0078a8;
 }
 
@@ -18,7 +125,7 @@ html {
 
 .register {
     background-color: #009fb2;
-}
+} */
 
 /* Styles for accordion list */
 .accordion {
@@ -46,9 +153,7 @@ html {
 }
 /* end styles for accordion list */
 
-.Mission {
-    outline: 1px solid black;
-}
+
 
 .HomeNav {
     outline: 1px solid black;
