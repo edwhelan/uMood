@@ -181,14 +181,22 @@ function sendData(answersArray) {
   let question4 = loopThrough(answersArray[3]);
   let question5 = loopThrough(answersArray[4]);
   let question6 = loopThrough(answersArray[5]);
+
+  const d = new Date();
+  let year = d.getFullYear();
+  let month = d.getMonth() + 1;
+  let date = d.getDate();
+
+  let today = `${year}/${month}/${date}`;
   console.log(question1);
+
   return `
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   <script>
   new Chart(document.getElementById('line-chart'), {
     type: 'line',
     data: {
-      labels: ['${answersArray[0][0].date.toString().substring(0, 15)}', '${answersArray[0][1].date.toString().substring(0, 15)}', '${answersArray[0][2].date.toString().substring(0, 15)}', '${answersArray[0][3].date.toString().substring(0, 15)}', '${answersArray[0][4].date.toString().substring(0, 15)}', '${answersArray[0][5].date.toString().substring(0, 15)}', '${answersArray[0][6].date.toString().substring(0, 15)}'],
+      labels: ['6 Days Ago', '5 Days Ago', '4 Days Ago', '3 Days Ago', '2 Days Ago', '1 Day Ago', '${today}'],
       datasets: [{
         data: [${question1}],
         label: "Question 1",

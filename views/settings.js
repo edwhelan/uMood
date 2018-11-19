@@ -6,12 +6,12 @@ function settingsPage(email, name) {
 <h3>Update your personal information</h3>
 <form action="/user/settings" method="POST">
     <label>
-        Email Address:
+        Email Address:<br>
         <input type="text" name="emailAddressText" value="${email}">
     </label>
     <br>
     <label>
-        Display Name:
+        Display Name:<br>
         <input type="text" name="displayNameText" value="${name}">
     </label>
     <input type="submit" value="Update">
