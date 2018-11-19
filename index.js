@@ -49,8 +49,7 @@ const d = new Date();
 let year = d.getFullYear();
 let month = d.getMonth() + 1;
 let date = d.getDate();
-// let month = 12;
-// let date = 31;
+
 let today = `${year}-${month}-${date}`;
 
 function protectRoute(req, res, next) {
@@ -131,8 +130,9 @@ app.get(`/:id([0-9]+)/home`, protectRoute, (req, res) => {
           console.log(answers);
           res.send(page(`
         ${helper.header(req.session.user)}
-        ${helper.homePage('Welcome back, ' + user.displayname, `<img src="../images/graphImage.png" class="placeholderImg">`, req.session.user.id)}
+        ${helper.homePage('Welcome back, ' + user.displayname, req.session.user.id)}
         ${noteForm(notes)}
+        ${helper.sendData(answers)}
         `));
         })
     })

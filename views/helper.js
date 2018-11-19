@@ -91,12 +91,12 @@ function ourMission() {
 }
 
 // FUNCTIONS FOR USER HOME
-function homePage(greeting, content, user) {
+function homePage(greeting, user) {
   return `
   <section class="summary">
   <h3>${greeting}</h3>
-  ${content}
-  <canvas id="line-chart" width="800" height="450"></canvas>
+
+  <canvas id="line-chart" width="800" height="450" aria-label="Line Graph" role="img"></canvas>
   <div class="stats">
     <ul>
       <li>NUMBER</li>
@@ -165,6 +165,71 @@ function gettingAnswers(user) {
     })
 }
 
+function loopThrough(array) {
+  let newArray = []
+
+  while (array.length < 7) {
+    array.unshift({ answer: 0 })
+  }
+  for (object of array) {
+    newArray.push(object.answer);
+  }
+  return newArray;
+}
+
+
+function sendData(answersArray) {
+  let question1 = loopThrough(answersArray[0]);
+  let question2 = loopThrough(answersArray[1]);
+  let question3 = loopThrough(answersArray[2]);
+  let question4 = loopThrough(answersArray[3]);
+  let question5 = loopThrough(answersArray[4]);
+  console.log(question1);
+  return `
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+  <script>
+  new Chart(document.getElementById('line-chart'), {
+    type: 'line',
+    data: {
+      labels: ['6 Days Ago', '5 Days Ago', '4 Days Ago', '3 Days Ago', '2 Days Ago', 'Yesterday', 'Today'],
+      datasets: [{
+        data: [${question1}],
+        label: "Question 1",
+        borderColor: "red",
+        fill: false
+      }, {
+        data: [${question2}],
+        label: "Question 2",
+        borderColor: "blue",
+        fill: false
+      }, {
+        data: [${question3}],
+        label: "Question 3",
+        borderColor: "green",
+        fill: false
+      }, {
+        data: [${question4}],
+        label: "Question 4",
+        borderColor: "yellow",
+        fill: false
+      }, {
+        data: [${question5}],
+        label: "Question 5",
+        borderColor: "orange",
+        fill: false
+      }
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: "Last 7 days"
+      }
+    }
+  });
+  </script>`
+}
+
 
 module.exports = {
   header,
@@ -175,5 +240,6 @@ module.exports = {
   ourMission,
   homePage,
   questions,
-  gettingAnswers
+  gettingAnswers,
+  sendData
 }

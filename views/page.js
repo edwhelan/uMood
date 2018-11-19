@@ -14,7 +14,7 @@ function page(content) {
         crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
         <link href="../stylesheets/index.css" rel="stylesheet" type="text/css">
-      </head>
+        </head>
       <body>
         ${content}
         <footer>
@@ -48,10 +48,9 @@ function page(content) {
           </ul>
 
         </footer>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
-        <script src="./Chart.js tests/test.js"></script>
-        <script src="../scripts/index.js"></script>
+        
 
+        <script src="../scripts/index.js"></script>
       </body>
       
     </html>
