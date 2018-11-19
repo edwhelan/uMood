@@ -123,10 +123,19 @@ function homePage(greeting, user) {
 // FUNCTIONS FOR QUESTIONS
 function questions(content) {
   return `
+  <section class="questions">
+  <p>  What difficulties did you have doing these things on a scale 0-4.<br>
+  0 = No Difficulty<br>
+  1 = Mild Difficulty<br>
+  2 = Moderate Difficulty<br>
+  3 = Severe Difficulty<br>
+  4 = Extreme Difficulty or Cannot Do<br>
+  based on WHODAS 36 Screen</p>
     <form method="post" action="/answers" class="questionsForm">
       ${content}
       <input type="submit" value="Submit">
     </form>
+    </section>
   `;
 }
 
@@ -134,16 +143,11 @@ function drawQues(question, quId) {
   return `
   <label>${question}</label>
   <select name=name${quId}>
+    <option value="0">0</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
   <select>`;
 }
 
