@@ -3,11 +3,15 @@ let Answer = require(`../models/Answer`);
 function header(isLoggedIn = false) {
   return `
     <header>
+
+    ${
+    isLoggedIn ? settingsLink() : none()
+    }
+    <h1>uMood</h1>
     ${
     isLoggedIn ? logoutButton() : none()
     }
 
-    <h1>uMood</h1>
     </header>
   `
 }
@@ -64,11 +68,15 @@ function registrationForm() {
 
 function logoutButton() {
   return `
-    <form action='/logout' method='POST'>
+    <form action='/logout' method='POST' class="logoutButton">
       <input type="submit" value="Logout">
     </form>
-    <a href="/user/settings">Settings</a>
+    
   `
+}
+
+function settingsLink() {
+  return `<a href="/user/settings">Settings</a>`;
 }
 
 function ourMission() {
@@ -83,19 +91,31 @@ function ourMission() {
 }
 
 // FUNCTIONS FOR USER HOME
-function homePage(content, user) {
+function homePage(greeting, content, user) {
   return `
+  <section class="summary">
+  <h3>${greeting}</h3>
   ${content}
   <canvas id="line-chart" width="800" height="450"></canvas>
-  <a href="/${user}/questions">Questions</a>
+  <div class="stats">
+    <ul>
+      <li>NUMBER</li>
+      <li>NUMBER</li>
+      <li>ASS</li>
+      <li>NUMBER</li>
+    </ul>
+  </div>
+
+  <button class="questionsButton"><a href="/${user}/questions">Questions</a></button>
+  </section>
   <div class="Resources">
       <h3>Resources (will customize towards user over time)</h3>
-      <p>
-          <a href="#">Link 1</a> <br>
-          <a href="#">Link 2</a> <br>
-          <a href="#">Link 3</a> <br>
-          <a href="#">Link 4</a> <br>
-      </p>
+      <ul>
+          <li><a href="#">Link 1</a></li>
+          <li><a href="#">Link 2</a></li>
+          <li><a href="#">Link 3</a></li>
+          <li><a href="#">Link 4</a></li>
+      </ul>
   </div>
   `;
 }
@@ -103,7 +123,7 @@ function homePage(content, user) {
 // FUNCTIONS FOR QUESTIONS
 function questions(content) {
   return `
-    <form method="post" action="/answers">
+    <form method="post" action="/answers" class="questionsForm">
       ${content}
       <input type="submit" value="Submit">
     </form>
@@ -150,6 +170,7 @@ module.exports = {
   header,
   drawQues,
   loginForm,
+  settingsLink,
   registrationForm,
   ourMission,
   homePage,

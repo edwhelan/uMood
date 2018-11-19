@@ -58,6 +58,8 @@ class User {
 
   // UPDATE
   static updateDisplayNameAndEmail(newName, newEmail, id) {
+    this.emailaddress = newEmail;
+    this.displayname = newName;
     return db.one(`
     update users
     set displayname=$1,
