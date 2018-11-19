@@ -27,7 +27,7 @@ function notesForm(allNotes) {
         ${
         allNotes.map(note => {
             return existingNotes(note.date, note.note)
-        })
+        }).join('')
         }
         `;
 }
