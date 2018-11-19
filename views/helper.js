@@ -109,12 +109,12 @@ function homePage(greeting, user) {
   <button class="questionsButton"><a href="/${user}/questions">Questions</a></button>
   </section>
   <div class="Resources">
-      <h3>Resources (will customize towards user over time)</h3>
-      <ul>
-          <li><a href="#">Link 1</a></li>
-          <li><a href="#">Link 2</a></li>
-          <li><a href="#">Link 3</a></li>
-          <li><a href="#">Link 4</a></li>
+      <h3>Mental Health Resources</h3>
+      <ul style="text-align: center">
+          <li><a href="https://psychcentral.com/resources/">PsychCentral</a></li>
+          <li><a href="https://www.psychiatry.org/patients-families">American Psychiatric Association</a></li>
+          <li><a href="https://medlineplus.gov/mentalhealth.html">National Institutes of Health - National Library of Medicine</a></li>
+          <li><a href="http://www.dsm5.org/Pages/Default.aspx">Diagnostic and Statistical Manual of Mental Disorders (DSM-5)</a></li>
       </ul>
   </div>
   `;
