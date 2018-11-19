@@ -70,12 +70,16 @@ class User {
 
 
   updatePassword(newPassword) {
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const hash = bcrypt.hashSync(newPassword, salt);
     return db.one(`
     update users
     set password=$1
-    where id=$2`, [newPassword, this.id]
+    where id=$2`, [hash, this.id]
     )
   }
+
+
 
 
   // DELETE
