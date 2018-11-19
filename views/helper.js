@@ -22,24 +22,24 @@ function footer() {
     <ul class="social-links">
       <li>Ed Whelan
         <ul class="icons">
-          <li><a href=#><i class="fas fa-envelope-square"></i></a></li>
-          <li><a href=#><i class="fab fa-linkedin"></i></a></li>
-          <li><a href=#><i class="fab fa-github"></i></a></li>
+          <li><a href=#><i class="fas fa-envelope-square" target="_blank"></i></a></li>
+          <li><a href=#><i class="fab fa-linkedin" target="_blank"></i></a></li>
+          <li><a href=#><i class="fab fa-github" target="_blank"></i></a></li>
 
         </ul>
       </li>
       <li>Lorenzo Salvio
       <ul class="icons">
-      <li><a href=#><i class="fas fa-envelope-square"></i></a></li>
-      <li><a href=#><i class="fab fa-linkedin"></i></a></li>
-      <li><a href=#><i class="fab fa-github"></i></a></li>
+      <li><a href="mailto:salviolorenzo@gmail.com" target="_blank"><i class="fas fa-envelope-square"></i></a></li>
+      <li><a href="https://linkedin.com/in/lorenzo-salvio" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+      <li><a href="https://github.com/salviolorenzo" target="_blank"><i class="fab fa-github"></i></a></li>
 
     </ul></li>
       <li>Sam Erickson
       <ul class="icons">
-      <li><a href=#><i class="fas fa-envelope-square"></i></a></li>
-      <li><a href=#><i class="fab fa-linkedin"></i></a></li>
-      <li><a href=#><i class="fab fa-github"></i></a></li>
+      <li><a href=#><i class="fas fa-envelope-square" target="_blank"></i></a></li>
+      <li><a href=#><i class="fab fa-linkedin" target="_blank"></i></a></li>
+      <li><a href=#><i class="fab fa-github" target="_blank"></i></a></li>
 
     </ul></li>
     </ul>
