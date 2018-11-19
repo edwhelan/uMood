@@ -31,9 +31,9 @@ function page(content) {
             </li>
             <li>Sam Erickson
             <ul class="icons">
-            <li><a href=#><i class="fas fa-envelope-square"></i></a></li>
-            <li><a href=#><i class="fab fa-linkedin"></i></a></li>
-            <li><a href=#><i class="fab fa-github"></i></a></li>
+            <li><a href="samerickson95@gmail.com"><i class="fas fa-envelope-square"></i></a></li>
+            <li><a href="https://www.linkedin.com/in/sam-erickson-82b641163/"><i class="fab fa-linkedin"></i></a></li>
+            <li><a href="https://github.com/samerickson95"><i class="fab fa-github"></i></a></li>
             <li><a href=#><i class="fab fa-instagram"></i></a></li>
             <li><a href=#><i class="fab fa-facebook"></i></a></li>
           </ul></li>
