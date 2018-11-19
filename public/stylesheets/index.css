@@ -38,6 +38,7 @@ header{
 header h1{
   background-color: inherit;
   font-family: 'Righteous', cursive;
+  color: rgb(103, 180, 248);
 }
 
 header form{
@@ -56,20 +57,24 @@ header form{
 
 .loginReg{
   background-image:url('../images/mood.jpg');
+  min-height: 500px;
   background-size: cover;
   background-position: center;
   color: white;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   /* box-shadow:  0px 0px 10px 10px white inset; */
 }
 
 
 
-form{
+.loginReg form{
   
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* width: 50%; */
+  width: 100%;
   padding-top: 30px;
   padding-bottom: 30px;
 
@@ -98,6 +103,8 @@ form input {
 .Mission h3{
   background-color: inherit;
   margin: 0;
+  width: 100%;
+  text-align: center;
 }
 
 
@@ -114,6 +121,8 @@ form input {
 
 #line-chart{
  /* width: 80%;  */
+  max-width: 1000px;
+  /* min-width: 300px; */
   opacity: 0.8;
   background-color: white;
 }
@@ -204,12 +213,18 @@ form input {
 .questionsForm{
   height: 70%;
   display: flex;
+  flex-direction: column; 
   justify-content: space-evenly;
   align-items: center;
 }
 
 .questionsForm label, .questionsForm select, {
   margin: 10px;
+}
+
+.questionsForm select{
+  width: 50px;
+  height: 25px;
 }
 
 /* ==================================== */
@@ -219,6 +234,8 @@ form input {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-start;
+  height: 100%;
 }
 
 .setting{
@@ -242,6 +259,7 @@ form input {
 }
 
 .settings h3{
+  width: 100%;
   text-align: center;
   opacity: 0.5;
 }
@@ -285,6 +303,8 @@ form input {
 footer{
   background-color: white;
   display: flex;
+  bottom: 0;
+  width: 100%;
   justify-content: center;
   flex-wrap: wrap;
   padding: 5px;
@@ -343,4 +363,16 @@ footer h5{
     background-color: #009fb2;
 } */
 
+/* ====================================== */
+/* MEDIA QUERIES */
+/* ====================================== */
 
+@media screen and (min-width: 768px){
+  .loginReg form, .setting{
+    width: 50%;
+  }
+
+  .Mission p{
+    max-width: 80%;
+  }
+}

@@ -83,6 +83,7 @@ app.get('/', (req, res) => {
       ${helper.loginForm()}
       ${helper.registrationForm()}
       ${helper.ourMission()}
+      ${helper.footer()}
     `)
   )
 });
