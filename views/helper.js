@@ -195,7 +195,7 @@ function sendData(answersArray) {
   new Chart(document.getElementById('line-chart'), {
     type: 'line',
     data: {
-      labels: ['6 Days Ago', '5 Days Ago', '4 Days Ago', '3 Days Ago', '2 Days Ago', 'Yesterday', 'Today'],
+      labels: ['${answersArray[0][0].date.toString().substring(0, 15)}', '${answersArray[0][1].date.toString().substring(0, 15)}', '${answersArray[0][2].date.toString().substring(0, 15)}', '${answersArray[0][3].date.toString().substring(0, 15)}', '${answersArray[0][4].date.toString().substring(0, 15)}', '${answersArray[0][5].date.toString().substring(0, 15)}', '${answersArray[0][6].date.toString().substring(0, 15)}'],
       datasets: [{
         data: [${question1}],
         label: "Question 1",
