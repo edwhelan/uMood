@@ -138,24 +138,35 @@ app.get(`/:id([0-9]+)/home`, protectRoute, (req, res) => {
     })
 })
 
-let hasBeenSent = false;
+
+// getAnswerByDate(id, date)
+function protectQuestions(req, res, next) {
+  let hasBeenSent = Answer.checkAnswerByDate(1, today) ? false : true;
+  console.log(hasBeenSent);
+  if (hasBeenSent) {
+    next();
+  }
+  else {
+    res.redirect(`/`);
+  }
+}
 
 // QUESTIONS
-app.get(`/:id([0-9]+)/questions`, protectRoute, (req, res) => {
-  if (hasBeenSent === false) {
-    let questions = ``;
-    Question.getQuestions()
-      .then(array => {
-        array.forEach(question => {
-          questions += helper.drawQues(question.questiontext, question.id);
-        })
-        res.send(page(`
+app.get(`/:id([0-9]+)/questions`, protectRoute, protectQuestions, (req, res) => {
+  // if (hasBeenSent === false) {
+  let questions = ``;
+  Question.getQuestions()
+    .then(array => {
+      array.forEach(question => {
+        questions += helper.drawQues(question.questiontext, question.id);
+      })
+      res.send(page(`
         ${helper.header(req.session.user)}
         ${helper.questions(questions)}`));
-      });
-  } else {
-    res.redirect(`/${req.session.user.id}/home`);
-  }
+    });
+  // } else {
+  //   res.redirect(`/${req.session.user.id}/home`);
+  // }
 });
 
 app.post(`/answers`, (req, res) => {
@@ -164,7 +175,7 @@ app.post(`/answers`, (req, res) => {
   Answer.add(req.body.name3, today, req.session.user.id, 3)
   Answer.add(req.body.name4, today, req.session.user.id, 4)
   Answer.add(req.body.name5, today, req.session.user.id, 5)
-  hasBeenSent = true;
+  // hasBeenSent = true;
   res.redirect(`/${req.session.user.id}/home`);
 })
 

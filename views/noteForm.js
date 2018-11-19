@@ -1,5 +1,7 @@
 function existingNotes(date, noteValue) {
-    return `
+    if (noteValue) {
+
+        return `
     <button class="accordion">${date}</button>
     <div class="panel">
         <p>
@@ -7,6 +9,9 @@ function existingNotes(date, noteValue) {
         </p>
     </div>
     `
+    } else {
+        pass;
+    }
 }
 
 

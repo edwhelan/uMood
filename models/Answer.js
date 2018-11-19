@@ -33,6 +33,18 @@ class Answer {
         return result;
       })
   }
+  // querey to be used in checking if user
+  // has answered questions for the day
+  static checkAnswerByDate(id, date) {
+    return db.any(`
+    select * 
+    from answers
+    where id = 1 AND date ilike %$2%`, [id, date])
+      .then(result => {
+        return result;
+      })
+  }
+
 
   static answerByQuestion(user_id, question_id) {
     return db.any(`
