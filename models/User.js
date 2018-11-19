@@ -57,14 +57,14 @@ class User {
 
 
   // UPDATE
-  static updateDisplayNameAndEmail(newName, newEmail, id) {
-    // this.emailaddress = newEmail;
-    // this.displayname = newName;
-    return db.one(`
+  updateDisplayNameAndEmail(newName, newEmail) {
+    this.emailaddress = newEmail;
+    this.displayname = newName;
+    return db.result(`
     update users
     set displayname=$1,
     emailaddress=$2
-    where id=$3`, [newName, newEmail, id]
+    where id=$3`, [newName, newEmail, this.id]
     )
   }
 
@@ -72,7 +72,7 @@ class User {
   updatePassword(newPassword) {
     const salt = bcrypt.genSaltSync(saltRounds);
     const hash = bcrypt.hashSync(newPassword, salt);
-    return db.one(`
+    return db.result(`
     update users
     set password=$1
     where id=$2`, [hash, this.id]

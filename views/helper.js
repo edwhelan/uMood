@@ -26,6 +26,7 @@ function none() {
 // Login Form
 function loginForm() {
   return `
+  <section class="loginReg">
   <form action="/login" method="POST">
       <label>
           Email address:<br>
@@ -63,7 +64,7 @@ function registrationForm() {
       <br>
       <input type="submit" value="Register">
   </form>    
-  `;
+  </section>  `;
 }
 
 function logoutButton() {
@@ -76,13 +77,13 @@ function logoutButton() {
 }
 
 function settingsLink() {
-  return `<a href="/user/settings">Settings</a>`;
+  return `<a href="/user/settings" id="settingsLink"> Settings</a>`;
 }
 
 function ourMission() {
   return `
   <div class="Mission">
-  <h3>Mission</h3>
+  <h3>Purpose</h3>
   <p>
       Our goal is to create a platform for our users to track their mental wellness, thereby improving their awareness of themselves. We wanted to provide users with a visualization of their mental health over time, which will become more accurate the more the individual utilizes uMood.
   </p>
@@ -103,10 +104,10 @@ function homePage(greeting, user) {
   <div class="Resources">
       <h3>Mental Health Resources</h3>
       <ul style="text-align: center">
-          <li><a href="https://psychcentral.com/resources/">PsychCentral</a></li>
-          <li><a href="https://www.psychiatry.org/patients-families">American Psychiatric Association</a></li>
-          <li><a href="https://medlineplus.gov/mentalhealth.html">National Institutes of Health - National Library of Medicine</a></li>
-          <li><a href="http://www.dsm5.org/Pages/Default.aspx">Diagnostic and Statistical Manual of Mental Disorders (DSM-5)</a></li>
+          <li><a href="https://psychcentral.com/resources/" target="_blank">PsychCentral</a></li>
+          <li><a href="https://www.psychiatry.org/patients-families" target="_blank">American Psychiatric Association</a></li>
+          <li><a href="https://medlineplus.gov/mentalhealth.html" target="_blank">National Institutes of Health - National Library of Medicine</a></li>
+          <li><a href="http://www.dsm5.org/Pages/Default.aspx" target="_blank">Diagnostic and Statistical Manual of Mental Disorders (DSM-5)</a></li>
       </ul>
   </div>
   `;

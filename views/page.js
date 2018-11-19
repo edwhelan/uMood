@@ -25,25 +25,22 @@ function page(content) {
                 <li><a href=#><i class="fas fa-envelope-square"></i></a></li>
                 <li><a href=#><i class="fab fa-linkedin"></i></a></li>
                 <li><a href=#><i class="fab fa-github"></i></a></li>
-                <li><a href=#><i class="fab fa-instagram"></i></a></li>
-                <li><a href=#><i class="fab fa-facebook"></i></a></li>
+
               </ul>
             </li>
-            <li>Sam Erickson
-            <ul class="icons">
-            <li><a href=#><i class="fas fa-envelope-square"></i></a></li>
-            <li><a href=#><i class="fab fa-linkedin"></i></a></li>
-            <li><a href=#><i class="fab fa-github"></i></a></li>
-            <li><a href=#><i class="fab fa-instagram"></i></a></li>
-            <li><a href=#><i class="fab fa-facebook"></i></a></li>
-          </ul></li>
             <li>Lorenzo Salvio
             <ul class="icons">
             <li><a href=#><i class="fas fa-envelope-square"></i></a></li>
             <li><a href=#><i class="fab fa-linkedin"></i></a></li>
             <li><a href=#><i class="fab fa-github"></i></a></li>
-            <li><a href=#><i class="fab fa-instagram"></i></a></li>
-            <li><a href=#><i class="fab fa-facebook"></i></a></li>
+
+          </ul></li>
+            <li>Sam Erickson
+            <ul class="icons">
+            <li><a href=#><i class="fas fa-envelope-square"></i></a></li>
+            <li><a href=#><i class="fab fa-linkedin"></i></a></li>
+            <li><a href=#><i class="fab fa-github"></i></a></li>
+
           </ul></li>
           </ul>
 
