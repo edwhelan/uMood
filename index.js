@@ -164,6 +164,7 @@ app.post(`/answers`, (req, res) => {
   Answer.add(req.body.name3, today, req.session.user.id, 3)
   Answer.add(req.body.name4, today, req.session.user.id, 4)
   Answer.add(req.body.name5, today, req.session.user.id, 5)
+  Answer.add(req.body.name6, today, req.session.user.id, 6)
   hasBeenSent = true;
   res.redirect(`/${req.session.user.id}/home`);
 })
@@ -179,16 +180,31 @@ app.post(`/logout`, (req, res) => {
 app.get(`/user/settings`, protectRoute, (req, res) => {
   res.send(page(`
     ${helper.header()}
-    
-    ${settingsPage(req.session.user.emailaddress, req.session.user.displayname)}`))
+    ${settingsPage.settingsPage(req.session.user.emailaddress, req.session.user.displayname)}
+    ${settingsPage.changePassword()}
+    `));
 })
 
 // allow users to change name or email address
 app.post(`/user/settings`, protectRoute, (req, res) => {
-  User.updateDisplayNameAndEmail(req.body.displayNameText, req.body.emailAddressText, req.session.user.id)
-
+  req.session.user.displayname = req.body.displayNameText;
   res.redirect(`/${req.session.user.id}/home`);
+})
 
+app.post(`/password`, protectRoute, (req, res) => {
+
+  const password = req.body.current;
+  const newPass = req.body.newPass;
+  const check = req.body.newPassCheck;
+  User.getById(req.session.user.id)
+    .then(user => {
+      const match = user.checkPassword(password);
+
+      if (match && newPass === check) {
+        user.updatePassword(newPass);
+      }
+      res.redirect(`/${req.session.user.id}/home`);
+    })
 })
 
 // NOTES // post only
