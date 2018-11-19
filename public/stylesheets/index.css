@@ -13,14 +13,7 @@ html, body{
 
   *, *:before, *:after {
     box-sizing: inherit;
-    background-color: #d7f4ff;
-}
-
-body *{
-  background-color: rgb(215, 215, 215);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    /* background-color: #d7f4ff; */
 }
 
 a{
@@ -40,26 +33,42 @@ body{
 header{
   background-color: aliceblue;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
+  align-items: center;
   border-bottom: 1px solid rgba(0,0,0,0.2);
-
 }
 header h1{
   background-color: inherit;
+  font-family: 'Righteous', cursive;
 }
+
+header form{
+  display: flex;
+}
+
+.logoutButton{
+  margin: 0;
+  padding: 0;
+  /* opacity: 0.; */
+}
+
+/* ==================================== */
+/* ROOT STYLES */
+/* ==================================== */
 
 form{
   background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
+  /* width: 50%; */
   margin-top: 30px;
   padding-bottom: 30px;
 
 }
 
 form label{
-  background-color:white;
+  background-color:#f8f8f8;
 }
 
 form input {
@@ -74,24 +83,170 @@ form input {
   padding: 20px;
   margin: 0;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   /* outline: 1px solid black; */
+}
+
+.Mission h3{
+  background-color: inherit;
 }
 
 .Mission p{ 
   background-color: #f7f7f7;
 }
 
+/* ==================================== */
+/* USER HOME STYLES */
+/* ==================================== */
+
+#line-chart{
+  display:none;
+}
+
+.placeholderImg {
+  max-width: 100%;
+}
+
+.summary{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0,0,0,0.2);
+}
+
+.summary h3{
+  margin: 5px;
+}
+
+.stats{
+  width: 80%;
+}
+
+.stats ul{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  list-style-type: none;
+  padding: 0;
+}
+
+.questionsButton{
+  padding: 10px 0;
+  width: 90%;
+  background-color: aliceblue;
+  border-radius: 5px;
+}
+
+.Resources{
+  display: flex;
+  flex-wrap: wrap;
+  border:  0;
+  justify-content: center;
+  padding: 20px;
+}
+
+.Resources h3{
+  width: 100%;
+  text-align: center;
+  margin: 0;
+}
+
+.Resources ul{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.Resources li {
+  padding: 5px 0;
+}
+
+/* ==================================== */
+/* QUESTIONS FORM STYLES */
+/* ==================================== */
+
+.questionsForm{
+  display: flex;
+}
+
+.questionsForm label, .questionsForm select, {
+  padding: 10px;
+}
+
+/* ==================================== */
+/* SETTINGS FORM STYLES */
+/* ==================================== */
+.setting form{
+  display: flex;
+  flex-direction: column;
+  align-items: center; 
+}
+
+.setting input{
+  margin: 10px;
+}
+
+.setting h3{
+  text-align: center;
+  opacity: 0.5;
+}
+
+
+/* ============================ */
+/* Styles for accordion list */
+/* ============================ */
+
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  text-align: center;
+  outline: none;
+  font-size: 15px;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.panel {
+  padding: 0 18px;
+  margin: none;
+  display: none;
+  background-color: white;
+  overflow: hidden;
+}
+/* end styles for accordion list */
+
+/* ==================================== */
+/* FOOTER STYLES */
+/* ==================================== */
+
 footer{
   background-color: aliceblue;
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 5px;
 }
 
 footer *{
   background-color: inherit;
 }
 
+footer h5{
+  margin: 0;
+}
+
 .social-links{
   background-color: inherit;
+  list-style-type: none;
   width: 100%;
   padding: 0;
   display: flex;
@@ -100,6 +255,10 @@ footer *{
 }
 
 .social-links li{
+  list-style-type: none;
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 30%;
 }
 
@@ -107,6 +266,7 @@ footer *{
   width: 90%;
   padding: 10px 0;
   display: flex;
+  margin: 0;
   flex-direction: row;
   justify-content: space-evenly;
 }
@@ -127,39 +287,4 @@ footer *{
     background-color: #009fb2;
 } */
 
-/* Styles for accordion list */
-.accordion {
-    background-color: #eee;
-    color: #444;
-    cursor: pointer;
-    padding: 18px;
-    width: 100%;
-    border: none;
-    text-align: left;
-    outline: none;
-    font-size: 15px;
-    transition: 0.4s;
-}
 
-.active, .accordion:hover {
-    background-color: #ccc;
-}
-
-.panel {
-    padding: 0 18px;
-    display: none;
-    background-color: white;
-    overflow: hidden;
-}
-/* end styles for accordion list */
-
-
-
-.HomeNav {
-    outline: 1px solid black;
-    text-align: end;
-}
-
-.Resources {
-    outline: 1px solid black;
-}

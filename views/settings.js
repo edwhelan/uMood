@@ -1,7 +1,8 @@
 //load form with preloaded information so they can change whatever they want
 function settingsPage(email, name) {
   return `
-<div class="panel">
+<div class="setting">
+<h3>Update your personal information</h3>
 <form action="/user/settings" method="POST">
     <label>
         Email Address:
