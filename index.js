@@ -164,6 +164,7 @@ app.post(`/answers`, (req, res) => {
   Answer.add(req.body.name3, today, req.session.user.id, 3)
   Answer.add(req.body.name4, today, req.session.user.id, 4)
   Answer.add(req.body.name5, today, req.session.user.id, 5)
+  Answer.add(req.body.name6, today, req.session.user.id, 6)
   hasBeenSent = true;
   res.redirect(`/${req.session.user.id}/home`);
 })

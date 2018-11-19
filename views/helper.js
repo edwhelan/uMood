@@ -97,16 +97,8 @@ function homePage(greeting, user) {
   <h3>${greeting}</h3>
 
   <canvas id="line-chart" width="800" height="450" aria-label="Line Graph" role="img"></canvas>
-  <div class="stats">
-    <ul>
-      <li>NUMBER</li>
-      <li>NUMBER</li>
-      <li>ASS</li>
-      <li>NUMBER</li>
-    </ul>
-  </div>
 
-  <button class="questionsButton"><a href="/${user}/questions">Questions</a></button>
+  <a href="/${user}/questions"><button class="questionsButton">Questions</button></a>
   </section>
   <div class="Resources">
       <h3>Resources (will customize towards user over time)</h3>
@@ -155,7 +147,7 @@ function drawQues(question, quId) {
 // THIS FUNCTION RETURNS THE ARRAY WITH ALL THE DATA FOR THE LAST WEEK
 function gettingAnswers(user) {
   let promiseArray = [];
-  for (let i = 1; i < 6; i++) {
+  for (let i = 1; i < 7; i++) {
     promiseArray.push(Answer.answerByQuestion(user.id, i))
   }
   return Promise.all(promiseArray)
@@ -188,6 +180,7 @@ function sendData(answersArray) {
   let question3 = loopThrough(answersArray[2]);
   let question4 = loopThrough(answersArray[3]);
   let question5 = loopThrough(answersArray[4]);
+  let question6 = loopThrough(answersArray[5]);
   console.log(question1);
   return `
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
@@ -220,6 +213,12 @@ function sendData(answersArray) {
         data: [${question5}],
         label: "Question 5",
         borderColor: "orange",
+        fill: false
+      
+      }, {
+        data: [${question6}],
+        label: "Question 6",
+        borderColor: "purple",
         fill: false
       }
       ]
