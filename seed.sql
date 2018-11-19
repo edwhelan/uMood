@@ -31,12 +31,26 @@ insert into users
 insert into questions
   (questiontext)
     values
-  (' How was your focus today?'),
-  ('How did your social interactions go today?'),
-  ('How did you feel about yourself today?'),
-  ('How did you feel physically?'),
-  ('How did you feel overall?');
-
+  ('Concentrating on doing something for 10 minutes.'),
+  ('Getting out of your home.'),
+  ('Eating.'),
+  ('Sleeping.'),
+  ('Getting all the work done that you need to do.'),
+  ('Getting along with people in your surroundings');
+  -- What difficulties did you have doing these things
+    -- scale of 0 - 4
+    -- 0 = No Difficulty
+    -- 1 = Mild Difficulty
+    -- 2 = Moderate Difficulty
+    -- 3 = Severe Difficulty
+    -- 4 = Extreme Difficulty or Cannot Do
+    -- based on WHODAS 36 Screen
+  -- 1. Concentrating on doing something for 10 minutes
+  -- 2. Getting out of your home
+  -- 3. Eating
+  -- 4. Sleeping
+  -- 4. Getting all the work done that you need to do
+  -- 5. Getting along with people in your surroundings
 
   insert into answers
     (answer, date,  user_id, question_id)

@@ -146,7 +146,6 @@ app.get(`/:id([0-9]+)/questions`, protectRoute, (req, res) => {
     let questions = ``;
     Question.getQuestions()
       .then(array => {
-        hasBeenSent = true;
         array.forEach(question => {
           questions += helper.drawQues(question.questiontext, question.id);
         })
@@ -165,6 +164,7 @@ app.post(`/answers`, (req, res) => {
   Answer.add(req.body.name3, today, req.session.user.id, 3)
   Answer.add(req.body.name4, today, req.session.user.id, 4)
   Answer.add(req.body.name5, today, req.session.user.id, 5)
+  hasBeenSent = true;
   res.redirect(`/${req.session.user.id}/home`);
 })
 
@@ -186,7 +186,9 @@ app.get(`/user/settings`, protectRoute, (req, res) => {
 // allow users to change name or email address
 app.post(`/user/settings`, protectRoute, (req, res) => {
   User.updateDisplayNameAndEmail(req.body.displayNameText, req.body.emailAddressText, req.session.user.id)
-  res.redirect(`/${req.session.user.id}/home`)
+
+  res.redirect(`/${req.session.user.id}/home`);
+
 })
 
 // NOTES // post only
