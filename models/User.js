@@ -57,25 +57,29 @@ class User {
 
 
   // UPDATE
-  static updateDisplayNameAndEmail(newName, newEmail, id) {
+  updateDisplayNameAndEmail(newName, newEmail) {
     this.emailaddress = newEmail;
     this.displayname = newName;
-    return db.one(`
+    return db.result(`
     update users
     set displayname=$1,
     emailaddress=$2
-    where id=$3`, [newName, newEmail, id]
+    where id=$3`, [newName, newEmail, this.id]
     )
   }
 
 
   updatePassword(newPassword) {
-    return db.one(`
+    const salt = bcrypt.genSaltSync(saltRounds);
+    const hash = bcrypt.hashSync(newPassword, salt);
+    return db.result(`
     update users
     set password=$1
-    where id=$2`, [newPassword, this.id]
+    where id=$2`, [hash, this.id]
     )
   }
+
+
 
 
   // DELETE

@@ -1,8 +1,4 @@
-function existingNotes(d, noteValue) {
-    let year = d.getFullYear();
-    let month = d.getMonth() + 1;
-    let date = d.getDate();
-    console.log(year, month, date);
+function existingNotes(date, noteValue) {
     return `
     <button class="accordion">${month}/${date}/${year}</button>
     <div class="panel">
@@ -22,7 +18,7 @@ function notesForm(allNotes) {
             <form action="/notes/add" method="POST">
                 <label>
                     Notes:
-                    <input type="text" name="noteText">
+                    <input type="text" name="noteText" required>
                 </label>
                 <br>
                 <input type="submit" value="Add To Notes">

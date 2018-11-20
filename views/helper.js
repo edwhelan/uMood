@@ -16,6 +16,37 @@ function header(isLoggedIn = false) {
   `
 }
 
+function footer() {
+  return ` <footer>
+  <h5>Built by:<br></h5>
+    <ul class="social-links">
+      <li>Ed Whelan
+        <ul class="icons">
+          <li><a href=#><i class="fas fa-envelope-square" target="_blank"></i></a></li>
+          <li><a href=#><i class="fab fa-linkedin" target="_blank"></i></a></li>
+          <li><a href=#><i class="fab fa-github" target="_blank"></i></a></li>
+
+        </ul>
+      </li>
+      <li>Lorenzo Salvio
+      <ul class="icons">
+      <li><a href="mailto:salviolorenzo@gmail.com" target="_blank"><i class="fas fa-envelope-square"></i></a></li>
+      <li><a href="https://linkedin.com/in/lorenzo-salvio" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+      <li><a href="https://github.com/salviolorenzo" target="_blank"><i class="fab fa-github"></i></a></li>
+
+    </ul></li>
+      <li>Sam Erickson
+      <ul class="icons">
+      <li><a href=#><i class="fas fa-envelope-square" target="_blank"></i></a></li>
+      <li><a href=#><i class="fab fa-linkedin" target="_blank"></i></a></li>
+      <li><a href=#><i class="fab fa-github" target="_blank"></i></a></li>
+
+    </ul></li>
+    </ul>
+
+  </footer>`
+}
+
 
 
 function none() {
@@ -26,15 +57,16 @@ function none() {
 // Login Form
 function loginForm() {
   return `
+  <section class="loginReg">
   <form action="/login" method="POST">
       <label>
           Email address:<br>
-          <input type="text" name="email">
+          <input type="email" name="email" required>
       </label>
       <br>
       <label>
           Password:<br>
-          <input type="password" name="password">
+          <input type="password" name="password" required>
       </label>
       <br>
       <input type="submit" value="Login">
@@ -48,22 +80,22 @@ function registrationForm() {
   <form action="/register" method="POST">
       <label>
           Email address:<br>
-          <input type="text" name="email">
+          <input type="email" name="email" required>
       </label>
       <br>
       <label>
           Display name:<br>
-          <input type="text" name="displayName">
+          <input type="text" name="displayName" required>
       </label>
       <br>
       <label>
           Password:<br>
-          <input type="password" name="password">
+          <input type="password" name="password" required>
       </label>
       <br>
       <input type="submit" value="Register">
   </form>    
-  `;
+  </section>  `;
 }
 
 function logoutButton() {
@@ -76,13 +108,13 @@ function logoutButton() {
 }
 
 function settingsLink() {
-  return `<a href="/user/settings">Settings</a>`;
+  return `<a href="/user/settings" id="settingsLink"> Settings</a>`;
 }
 
 function ourMission() {
   return `
   <div class="Mission">
-  <h3>Mission</h3>
+  <h3>Purpose</h3>
   <p>
       Our goal is to create a platform for our users to track their mental wellness, thereby improving their awareness of themselves. We wanted to provide users with a visualization of their mental health over time, which will become more accurate the more the individual utilizes uMood.
   </p>
@@ -97,24 +129,16 @@ function homePage(greeting, user) {
   <h3>${greeting}</h3>
 
   <canvas id="line-chart" width="800" height="450" aria-label="Line Graph" role="img"></canvas>
-  <div class="stats">
-    <ul>
-      <li>NUMBER</li>
-      <li>NUMBER</li>
-      <li>ASS</li>
-      <li>NUMBER</li>
-    </ul>
-  </div>
 
-  <button class="questionsButton"><a href="/${user}/questions">Questions</a></button>
+  <a href="/${user}/questions"><button class="questionsButton">Questions</button></a>
   </section>
   <div class="Resources">
-      <h3>Resources (will customize towards user over time)</h3>
-      <ul>
-          <li><a href="#">Link 1</a></li>
-          <li><a href="#">Link 2</a></li>
-          <li><a href="#">Link 3</a></li>
-          <li><a href="#">Link 4</a></li>
+      <h3>Mental Health Resources</h3>
+      <ul style="text-align: center">
+          <li><a href="https://psychcentral.com/resources/" target="_blank">PsychCentral</a></li>
+          <li><a href="https://www.psychiatry.org/patients-families" target="_blank">American Psychiatric Association</a></li>
+          <li><a href="https://medlineplus.gov/mentalhealth.html" target="_blank">National Institutes of Health - National Library of Medicine</a></li>
+          <li><a href="http://www.dsm5.org/Pages/Default.aspx" target="_blank">Diagnostic and Statistical Manual of Mental Disorders (DSM-5)</a></li>
       </ul>
   </div>
   `;
@@ -123,10 +147,19 @@ function homePage(greeting, user) {
 // FUNCTIONS FOR QUESTIONS
 function questions(content) {
   return `
+  <section class="questions">
+  <p>  What difficulties did you have doing these things on a scale 0-4.<br>
+  0 = No Difficulty<br>
+  1 = Mild Difficulty<br>
+  2 = Moderate Difficulty<br>
+  3 = Severe Difficulty<br>
+  4 = Extreme Difficulty or Cannot Do<br>
+  based on WHODAS 36 Screen</p>
     <form method="post" action="/answers" class="questionsForm">
       ${content}
       <input type="submit" value="Submit">
     </form>
+    </section>
   `;
 }
 
@@ -134,16 +167,11 @@ function drawQues(question, quId) {
   return `
   <label>${question}</label>
   <select name=name${quId}>
+    <option value="0">0</option>
     <option value="1">1</option>
     <option value="2">2</option>
     <option value="3">3</option>
     <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
   <select>`;
 }
 
@@ -151,7 +179,7 @@ function drawQues(question, quId) {
 // THIS FUNCTION RETURNS THE ARRAY WITH ALL THE DATA FOR THE LAST WEEK
 function gettingAnswers(user) {
   let promiseArray = [];
-  for (let i = 1; i < 6; i++) {
+  for (let i = 1; i < 7; i++) {
     promiseArray.push(Answer.answerByQuestion(user.id, i))
   }
   return Promise.all(promiseArray)
@@ -184,14 +212,23 @@ function sendData(answersArray) {
   let question3 = loopThrough(answersArray[2]);
   let question4 = loopThrough(answersArray[3]);
   let question5 = loopThrough(answersArray[4]);
+  let question6 = loopThrough(answersArray[5]);
+
+  const d = new Date();
+  let year = d.getFullYear();
+  let month = d.getMonth() + 1;
+  let date = d.getDate();
+
+  let today = `${year}/${month}/${date}`;
   console.log(question1);
+
   return `
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
   <script>
   new Chart(document.getElementById('line-chart'), {
     type: 'line',
     data: {
-      labels: ['6 Days Ago', '5 Days Ago', '4 Days Ago', '3 Days Ago', '2 Days Ago', 'Yesterday', 'Today'],
+      labels: ['6 Days Ago', '5 Days Ago', '4 Days Ago', '3 Days Ago', '2 Days Ago', '1 Day Ago', '${today}'],
       datasets: [{
         data: [${question1}],
         label: "Question 1",
@@ -217,6 +254,12 @@ function sendData(answersArray) {
         label: "Question 5",
         borderColor: "orange",
         fill: false
+      
+      }, {
+        data: [${question6}],
+        label: "Question 6",
+        borderColor: "purple",
+        fill: false
       }
       ]
     },
@@ -241,5 +284,6 @@ module.exports = {
   homePage,
   questions,
   gettingAnswers,
-  sendData
+  sendData,
+  footer
 }
