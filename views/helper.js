@@ -61,12 +61,12 @@ function loginForm() {
   <form action="/login" method="POST">
       <label>
           Email address:<br>
-          <input type="text" name="email">
+          <input type="text" name="email" required>
       </label>
       <br>
       <label>
           Password:<br>
-          <input type="password" name="password">
+          <input type="password" name="password" required>
       </label>
       <br>
       <input type="submit" value="Login">
@@ -80,17 +80,17 @@ function registrationForm() {
   <form action="/register" method="POST">
       <label>
           Email address:<br>
-          <input type="text" name="email">
+          <input type="text" name="email" required>
       </label>
       <br>
       <label>
           Display name:<br>
-          <input type="text" name="displayName">
+          <input type="text" name="displayName" required>
       </label>
       <br>
       <label>
           Password:<br>
-          <input type="password" name="password">
+          <input type="password" name="password" required>
       </label>
       <br>
       <input type="submit" value="Register">

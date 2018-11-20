@@ -7,12 +7,12 @@ function settingsPage(email, name) {
     <form action="/user/settings" method="POST">
     <label>
         Email Address:<br>
-        <input type="text" name="emailAddressText" value="${email}">
+        <input type="text" name="emailAddressText" value="${email}" required>
     </label>
     <br>
     <label>
         Display Name:<br>
-        <input type="text" name="displayNameText" value="${name}">
+        <input type="text" name="displayNameText" value="${name}" required>
     </label>
     <input type="submit" value="Update">
 </form>
@@ -28,15 +28,15 @@ function changePassword() {
         <label>
           Current Password:
         </label>
-        <input type="password" placeholder="p455word" name="current">
+        <input type="password" placeholder="p455word" name="current" required>
         <label>
           New Password:
         </label>
-        <input type="password" placeholder="p455word" name="newPass">
+        <input type="password" placeholder="p455word" name="newPass" required>
         <label>
           Confirm New Password:
         </label>
-        <input type="password" placeholder="p455word" name="newPassCheck">
+        <input type="password" placeholder="p455word" name="newPassCheck" required>
         <input type="submit" value="Change Password">
       </form>
     </div>
