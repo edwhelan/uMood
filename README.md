@@ -20,7 +20,7 @@
 ## Login / Registration
 
 ![alt text](./readme/images/desktopRoot.png)
-![alt text](./readme/images/mobileRoot.png)
+![alt text](./readme/images/mobile.gif)
 
 - New users can register with an email address, pick a display name, and create a password. Once they register, they will be brought to the user home page.
 
@@ -39,7 +39,7 @@
 
 ## Questions
 
-![alt text](./readme/images/desktopQuestions.png)
+![alt text](./readme/images/questions.gif)
 ![alt text](./readme/images/mobileQuestions.png)
 
 - Accessible once a day, the questions "take the temperature" -- so-to-speak -- on the user's wellbeing for the day. 
