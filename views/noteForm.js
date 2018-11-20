@@ -18,7 +18,7 @@ function notesForm(allNotes) {
             <form action="/notes/add" method="POST">
                 <label>
                     Notes:
-                    <input type="text" name="noteText">
+                    <input type="text" name="noteText" required>
                 </label>
                 <br>
                 <input type="submit" value="Add To Notes">
