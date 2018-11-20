@@ -7,6 +7,13 @@
 ## Technologies Used:
   - JavaScript, Node.js, Express.js, PostgreSQL, HTML5, CSS3
 
+## Roles: 
+  - Ed Whelan: Database Management and Backend Development
+
+  - Lorenzo Salvio: Backend Development and Frontend Styling
+
+  - Sam Erickson: HTML Development and Debugging
+
 ## Login / Registration
 
 ![alt text](./images/desktopRoot.png)
