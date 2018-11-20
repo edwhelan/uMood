@@ -1,6 +1,6 @@
 function existingNotes(date, noteValue) {
     return `
-    <button class="accordion">${month}/${date}/${year}</button>
+    <button class="accordion">${date}</button>
     <div class="panel">
         <p>
             ${noteValue}
@@ -15,13 +15,13 @@ function notesForm(allNotes) {
   <div class="userNotesCollection">
         <button class="accordion">Add To Notes</button>
         <div class="panel">
-            <form action="/notes/add" method="POST">
+            <form class='notesSection' action="/notes/add" method="POST">
                 <label>
-                    Notes:
-                    <input type="text" name="noteText" required>
-                </label>
+                    Notes
+                    </label>
+                    <textarea class='notesField' type="text"  placeholder="Whats on your mind?" name="noteText" required> </textarea>
                 <br>
-                <input type="submit" value="Add To Notes">
+                <input class="questionsButton" type="submit" value="Add To Notes">
             </form>
         </div>
         ${
