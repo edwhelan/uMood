@@ -26,7 +26,11 @@ function notesForm(allNotes) {
         </div>
         ${
         allNotes.map(note => {
-            return existingNotes(note.date, note.note)
+            let notesDates = note.date;
+            notesDates = notesDates.toString();
+            notesDates = notesDates.slice(0, 15)
+            // console.log(thisNotesDate.slice(0, 10));
+            return existingNotes(notesDates, note.note)
         }).join('')
         }
         `;

@@ -28,7 +28,7 @@ class Notes {
     select *
     from Notes
     where user_id=$1
-    order by date asc`, [id]
+    order by date desc`, [id]
     )
   }
 
