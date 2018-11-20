@@ -17,39 +17,6 @@ function page(content) {
         </head>
       <body>
         ${content}
-        <footer>
-        <h5>Built by:<br></h5>
-          <ul class="social-links">
-            <li>Ed Whelan
-              <ul class="icons">
-                <li><a href=#><i class="fas fa-envelope-square"></i></a></li>
-                <li><a href=#><i class="fab fa-linkedin"></i></a></li>
-                <li><a href=#><i class="fab fa-github"></i></a></li>
-                <li><a href=#><i class="fab fa-instagram"></i></a></li>
-                <li><a href=#><i class="fab fa-facebook"></i></a></li>
-              </ul>
-            </li>
-            <li>Sam Erickson
-            <ul class="icons">
-            <li><a href=#><i class="fas fa-envelope-square"></i></a></li>
-            <li><a href=#><i class="fab fa-linkedin"></i></a></li>
-            <li><a href=#><i class="fab fa-github"></i></a></li>
-            <li><a href=#><i class="fab fa-instagram"></i></a></li>
-            <li><a href=#><i class="fab fa-facebook"></i></a></li>
-          </ul></li>
-            <li>Lorenzo Salvio
-            <ul class="icons">
-            <li><a href=#><i class="fas fa-envelope-square"></i></a></li>
-            <li><a href=#><i class="fab fa-linkedin"></i></a></li>
-            <li><a href=#><i class="fab fa-github"></i></a></li>
-            <li><a href=#><i class="fab fa-instagram"></i></a></li>
-            <li><a href=#><i class="fab fa-facebook"></i></a></li>
-          </ul></li>
-          </ul>
-
-        </footer>
-        
-
         <script src="../scripts/index.js"></script>
       </body>
       

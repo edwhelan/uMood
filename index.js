@@ -83,6 +83,7 @@ app.get('/', (req, res) => {
       ${helper.loginForm()}
       ${helper.registrationForm()}
       ${helper.ourMission()}
+      ${helper.footer()}
     `)
   )
 });
@@ -196,6 +197,10 @@ app.get(`/user/settings`, protectRoute, (req, res) => {
 // allow users to change name or email address
 app.post(`/user/settings`, protectRoute, (req, res) => {
   req.session.user.displayname = req.body.displayNameText;
+  User.getById(req.session.user.id)
+    .then(user => {
+      user.updateDisplayNameAndEmail(req.body.displayNameText, req.body.emailAddressText);
+    })
   res.redirect(`/${req.session.user.id}/home`);
 })
 
