@@ -1,6 +1,6 @@
 # uMood
 
-![alt text](./images/logo.png)
+![alt text](./readme/images/logo.png)
 
 - lorem ipsum dolorem
 
