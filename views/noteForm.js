@@ -29,7 +29,6 @@ function notesForm(allNotes) {
             let notesDates = note.date;
             notesDates = notesDates.toString();
             notesDates = notesDates.slice(0, 15)
-            // console.log(thisNotesDate.slice(0, 10));
             return existingNotes(notesDates, note.note)
         }).join('')
         }
