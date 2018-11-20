@@ -1,6 +1,6 @@
 function existingNotes(date, noteValue) {
     return `
-    <button class="accordion">${date}</button>
+    <button class="accordion">${month}/${date}/${year}</button>
     <div class="panel">
         <p>
             ${noteValue}
