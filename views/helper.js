@@ -22,9 +22,9 @@ function footer() {
     <ul class="social-links">
       <li>Ed Whelan
         <ul class="icons">
-          <li><a href=#><i class="fas fa-envelope-square" target="_blank"></i></a></li>
-          <li><a href=#><i class="fab fa-linkedin" target="_blank"></i></a></li>
-          <li><a href=#><i class="fab fa-github" target="_blank"></i></a></li>
+          <li><a href="mailto:vroxing@gmail.com"><i class="fas fa-envelope-square" target="_blank"></i></a></li>
+          <li><a href="https://www.linkedin.com/in/edward-whelan-240887123/"><i class="fab fa-linkedin" target="_blank"></i></a></li>
+          <li><a href="https://github.com/edwhelan"><i class="fab fa-github" target="_blank"></i></a></li>
 
         </ul>
       </li>
