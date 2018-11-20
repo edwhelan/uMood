@@ -7,7 +7,7 @@ function settingsPage(email, name) {
     <form action="/user/settings" method="POST">
     <label>
         Email Address:<br>
-        <input type="text" name="emailAddressText" value="${email}" required>
+        <input type="email" name="emailAddressText" value="${email}" required>
     </label>
     <br>
     <label>

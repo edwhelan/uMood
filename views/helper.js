@@ -61,7 +61,7 @@ function loginForm() {
   <form action="/login" method="POST">
       <label>
           Email address:<br>
-          <input type="text" name="email" required>
+          <input type="email" name="email" required>
       </label>
       <br>
       <label>
@@ -80,7 +80,7 @@ function registrationForm() {
   <form action="/register" method="POST">
       <label>
           Email address:<br>
-          <input type="text" name="email" required>
+          <input type="email" name="email" required>
       </label>
       <br>
       <label>
