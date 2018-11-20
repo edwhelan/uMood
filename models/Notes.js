@@ -47,8 +47,6 @@ class Notes {
       [date, id])
       .then(result => {
         return result;
-        // const h = new Notes(result.id, result., result.date, result.notes, result.user_id);
-        // return h;
       })
   }
   // UPDATE

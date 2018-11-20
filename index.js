@@ -16,7 +16,7 @@ app.use(session({
   store: new pgSession({
     pgPromise: db
   }),
-  secret: 'whatever123', // remember to adjust before deploying
+  secret: 'g8j3lsa0sk2bbfhv5486nfgvge-387356!', // remember to adjust before deploying
   saveUninitialized: false,
   cookie: {
     maxAge: 30 * 24 * 60 * 60 * 1000 //Adjusts max time of session to 30 days
@@ -61,17 +61,6 @@ function protectRoute(req, res, next) {
     res.redirect('/');
   }
 }
-
-
-// function protectUser(req, res, next) {
-//   if (req.params.id === req.session.user.id) {
-//     next();
-//   }
-//   else {
-//     res.redirect(`/`);
-//   }
-// }
-
 
 // ROUTES
 
