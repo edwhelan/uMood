@@ -35,6 +35,8 @@
 
 - By clicking on the "Notes" panel, users can add a new set of notes whenever they would like. Notes can be anything from daily thoughts to observed triggers of mood spikes.
 
+- Users are provided with several links to online mental health resources in the "Resources" section.
+
 ## Questions
 
 ![alt text](./readme/images/desktopQuestions.png)
@@ -50,3 +52,10 @@
 
 - Users can easily update their username, the email associated with their account, and their account password.
 
+## Future Additions
+- Create different types of user account with varying permissions. 
+  - Healthcare providers can customize questions that their patients are asked.
+
+- Create personalized links for users based on their answers, for a more personalized experience. 
+
+- Allow users to add a list of "Support System" contacts who will be alerted if the users' scores are consistently high (indicating a more depressive mood level).
