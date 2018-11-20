@@ -213,10 +213,14 @@ app.post(`/password`, protectRoute, (req, res) => {
     .then(user => {
       const match = user.checkPassword(password);
 
-      if (match && newPass === check) {
+      if (match && newPass === check && newPass.length >= 8) {
         user.updatePassword(newPass);
+        res.redirect(`/${req.session.user.id}/home`);
       }
-      res.redirect(`/${req.session.user.id}/home`);
+      else {
+        res.redirect(`/user/settings`);
+      }
+
     })
 })
 
