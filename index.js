@@ -62,17 +62,6 @@ function protectRoute(req, res, next) {
   }
 }
 
-
-// function protectUser(req, res, next) {
-//   if (req.params.id === req.session.user.id) {
-//     next();
-//   }
-//   else {
-//     res.redirect(`/`);
-//   }
-// }
-
-
 // ROUTES
 
 // ROOT

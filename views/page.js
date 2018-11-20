@@ -26,8 +26,3 @@ function page(content) {
 }
 
 module.exports = page;
-
-//         ${headerContent}
-// ${
-  // isLoggedIn ? helper.logoutButton() : helper.loginOrRegister()
-  // }
