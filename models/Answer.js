@@ -33,6 +33,17 @@ class Answer {
         return result;
       })
   }
+  // querey to be used in checking if user
+  // has answered questions for the day
+  static checkAnswerByDate(id, date) {
+    return db.any(`
+    select * from answers
+    inner join
+    users u
+    on u.id = user_id
+    where u.id = $1 AND date=$2`, [id, date])
+  }
+
 
   static answerByQuestion(user_id, question_id) {
     return db.any(`

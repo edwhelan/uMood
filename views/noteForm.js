@@ -1,10 +1,6 @@
-function existingNotes(d, noteValue) {
-    let year = d.getFullYear();
-    let month = d.getMonth() + 1;
-    let date = d.getDate();
-    console.log(year, month, date);
+function existingNotes(date, noteValue) {
     return `
-    <button class="accordion">${month} - ${date} - ${year}</button>
+    <button class="accordion">${date}</button>
     <div class="panel">
         <p>
             ${noteValue}
