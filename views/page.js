@@ -17,6 +17,7 @@ function page(content) {
         </head>
       <body>
         ${content}
+
         <script src="../scripts/index.js"></script>
       </body>
       
