@@ -14,6 +14,8 @@ function page(content) {
         crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
         <link href="../stylesheets/index.css" rel="stylesheet" type="text/css">
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="../images/favicon.ico" type="image/x-icon">
         </head>
       <body>
         ${content}
