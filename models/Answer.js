@@ -37,12 +37,11 @@ class Answer {
   // has answered questions for the day
   static checkAnswerByDate(id, date) {
     return db.any(`
-    select * 
-    from answers
-    where id = 1 AND date ilike %$2%`, [id, date])
-      .then(result => {
-        return result;
-      })
+    select * from answers
+    inner join
+    users u
+    on u.id = user_id
+    where u.id = $1 AND date=$2`, [id, date])
   }
 
 
