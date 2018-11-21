@@ -216,7 +216,7 @@ app.post(`/password`, protectRoute, (req, res) => {
 // NOTES // post only
 // allow user 
 app.post(`/notes/add`, (req, res) => {
-  let today = `${year}-${month}-${date}`;
+  // let today = `${year}-${month}-${date}`;
   Notes.add(today, req.body.noteText, req.session.user.id)
   console.log(req.body.noteText, req.session.user.id)
   res.redirect(`/${req.session.user.id}/home`);
